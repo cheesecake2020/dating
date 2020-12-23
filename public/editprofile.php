@@ -5,6 +5,7 @@ require_once('../classes/functions.php');
 ini_set('display_errors', "On");
 $login_user = $_SESSION['login_user'];
 error_reporting(E_ALL & ~E_NOTICE);
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
