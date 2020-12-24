@@ -8,27 +8,16 @@
   html {
     scroll-behavior: smooth;
   }
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  body{
+    background:  #f9fbfe;
     min-height: 100vh;
-    margin: 0;
-    background: #f9fbfe;
   }
-  header {
-    padding: 20px 40px;
-  }
-  header h2 {
-    margin: 0;
-  }
-  /* フォームスタイル */
-  main {
-    margin: 20px 0;
-    background: #fff;
-    padding: 15px 40px;
-    border-radius: 6px;
-  }
+main{
+  margin:20px 0;
+  background: #fff;
+  padding: 20px 20px;
+  border-radius: 6px;
+}
   .err {
     color: red;
     font-weight: 700;
@@ -76,3 +65,15 @@
     color:  tomato;
 }
 /*フォームスタイル終わり*/
+/* レスポンシブ */
+@media (min-width:600px){
+  main{
+    margin: 40px;
+  }
+}
+@media (min-width:1440px){
+  main{
+    margin: 40px 150px;
+    padding:20px 60px;
+  }
+}

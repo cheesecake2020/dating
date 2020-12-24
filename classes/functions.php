@@ -23,6 +23,51 @@ function setToken(){
 
     return $csrf_token;
 }
+/**
+ * 年齢計算
+ * @param int
+ * @return int $age
+ */
+function getAge($birtdate){
+    // 今日の日付取得
+    $today = date("Ymd");
+    // 誕生日から'-'をとる
+    $birthday=str_replace("-", "", $birtdate);
+    // 年齢計算
+    $age=floor(($today-$birthday)/10000);
+    return $age;
+}
+/**
+ * 性別表示
+ * @param int
+ * @return string 
+ */
+    function  setGender($gender)
+    {
+        if ($gender === '1') {
+            return '男性';
+        } elseif ($gender === '2') {
+            return '女性';
+        } else {
+            return 'その他';
+        }
+    }
+/**
+ * 住所表示
+ * @param int arry
+ * @return string $val
+ */
+function getState($adress,$states){
+    // 住所の配列の中から
+ foreach ($states as $key => $val) {
+    //  データベースと同じkeyがあれば
+    if ($adress === $key) {
+        // 値を表示
+    return $val;
+    }
+}
+}
+// 血液型配列
 $blood_types = [
     ''=>'選択下さい',
     'A'=>'A',
@@ -30,6 +75,7 @@ $blood_types = [
     'O'=>'O',
     'AB'=>'AB'
 ];
+// 学歴配列
 $school = [
     ''=>'選択下さい',
     'tyugaku'=>'中学卒業',
@@ -40,7 +86,7 @@ $school = [
     'daigakuin'=>'大学院卒業',
     'sonota'=>'その他'
 ];
-
+// 居住地配列
 $states = [
     ''      => '選択下さい。',
     'hokkai'     => '北海道',
@@ -91,6 +137,7 @@ $states = [
     'kagoshima'  => '鹿児島県',
     'okinawa'    => '沖縄県'
 ];
+// 職業配列
 $works =[
     ''=>'選択下さい',
     'IT'=>'IT関連',
@@ -102,5 +149,3 @@ $works =[
     'keiei'=>'経営者',
     'sonota'=>'その他'
 ];
-    
-?>

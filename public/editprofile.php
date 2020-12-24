@@ -29,7 +29,7 @@ error_reporting(E_ALL & ~E_NOTICE);
                 <p>お名前：<?php echo h($login_user['name']); ?></p>
             </div>
             <div class="form-control">
-                <p>プロフィール写真：<a href="">未設定</a></p>
+                <p>プロフィール写真：<a href="fileup.php">未設定</a></p>
             </div>
             <div class="form-control">
                 <label for="gender" class="type">性別
@@ -128,8 +128,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 
         </form>
     </main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../lib/validator.js"></script>
+   
 </body>
 
 </html>

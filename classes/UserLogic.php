@@ -53,8 +53,8 @@ class UserLogic extends Dbc
             $stmt->bindValue(':birthdate', (string)h($userData['birthdate']), PDO::PARAM_STR);
             $stmt->bindValue(':state', (string)h($userData['state']), PDO::PARAM_STR);
             $stmt->bindValue(':school_career', (string)h($userData['school_career']), PDO::PARAM_STR);
-            $stmt->bindValue(':work',(string) h($userData['work']), PDO::PARAM_STR);
-            $stmt->bindValue(':hobby',(string) h($userData['hobby']), PDO::PARAM_STR);
+            $stmt->bindValue(':work', (string) h($userData['work']), PDO::PARAM_STR);
+            $stmt->bindValue(':hobby', (string) h($userData['hobby']), PDO::PARAM_STR);
             $stmt->bindValue(':personality', (string)h($userData['personality']), PDO::PARAM_STR);
             $stmt->bindValue(':message', (string)h($userData['message']), PDO::PARAM_STR);
             $stmt->bindValue(':user_id', (int)h($userData['user_id']), PDO::PARAM_INT);
@@ -62,7 +62,7 @@ class UserLogic extends Dbc
             $stmt->execute();
             $pdo->commit();
             $result = true;
-               return $result;
+            return $result;
         } catch (\Exception $e) {
             echo '<br>えらー：' . $e;
             echo 'SQL：' . $sql;
@@ -172,25 +172,28 @@ class UserLogic extends Dbc
      * @param string $email
      * @return bool $user
      */
-    public static function viewprofile($email)
+    public function viewprofile($email)
     {
-        $pdo = new Dbc();
+       
         // SQLの準備
-        $sql = 'SELECT * FROM users WHERE email = ?';
-        // emailを配列に入れる
-        $arr = [];
-        $arr[] = $email;
-
+        $sql = "SELECT * FROM $this->table_name WHERE email = ?";
+        $pdo = $this->dbConnect();
+        $pdo->beginTransaction();
+       
         try {
-            $stmt = $pdo->dbConnect()->prepare($sql);
-            $stmt->execute($arr);
-            // SQLの実行
-            // SQLの結果を返す
-            $user = $stmt->fetchAll();
-            return $user;
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, (string)h($email), PDO::PARAM_STR);
+
+            $stmt->execute();
+            $userData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $pdo->commit();
+            return $userData;
+           
         } catch (\Exception $e) {
-            echo $e;
-            return false;
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            $pdo->rollBack();
+            
         }
     }
 }

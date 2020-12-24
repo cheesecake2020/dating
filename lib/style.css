@@ -13,33 +13,14 @@ html {
 }
 
 body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  min-height: 100vh;
-  margin: 0;
   background: #f9fbfe;
+  min-height: 100vh;
 }
 
-header {
-  padding: 20px 40px;
-}
-
-header h2 {
-  margin: 0;
-}
-
-/* フォームスタイル */
 main {
   margin: 20px 0;
   background: #fff;
-  padding: 15px 40px;
+  padding: 20px 20px;
   border-radius: 6px;
 }
 
@@ -96,4 +77,17 @@ form input[type="radio"] {
 }
 
 /*フォームスタイル終わり*/
+/* レスポンシブ */
+@media (min-width: 600px) {
+  main {
+    margin: 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  main {
+    margin: 40px 150px;
+    padding: 20px 60px;
+  }
+}
 /*# sourceMappingURL=style.css.map */
