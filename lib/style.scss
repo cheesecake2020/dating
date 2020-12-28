@@ -1,85 +1,215 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "游ゴシック", "ヒラギノ角ゴ ProN", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "游ゴシック", "ヒラギノ角ゴ ProN", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f9fbfe;
+  min-height: 100vh;
+}
+
+// メニュー
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: 999;
+  background-color: #8e44ad;
+  width: 100%;
+  
+}
+.logo{
+  display: none;
+}
+.nav-ul {
+  display:flex;
+  list-style-type: none;
+  
+}
+
+.nav-ul li a {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color:#fff;
+  font-weight: 700;
+  
+}
+
+.logo a {
+  color:#fff;
+  font-weight: 700;
+}
+
+.hamburger {
+  background-color: transparent;
+  border: 0;
+  color: #444444;
+  font-size: 40px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.hamburger:focus {
+  outline: none;
+}
+
+.nav-ul li a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right:5px;
+  i{
+    margin-top:5px;
+    margin-right: 5px;
   }
-  html {
-    scroll-behavior: smooth;
-  }
-  body{
-    background:  #f9fbfe;
-    min-height: 100vh;
-  }
-main{
-  margin:20px 0;
+}
+.pcmenu{
+  display: none;
+}
+main {
+  margin-top: 60px;
   background: #fff;
   padding: 20px 20px;
   border-radius: 6px;
 }
-  .err {
-    color: red;
-    font-weight: 700;
-  }
-  button {
-    margin: 20px 0;
-  }
-  .form-control {
-    display: block;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-  }
-  form input,
+
+.err {
+  color: red;
+  font-weight: 700;
+}
+
+button {
+  margin: 20px 0;
+}
+
+.form-control {
+  display: block;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+}
+
+form input,
+select,
+textarea {
+  border: 2px solid #f0f0f0;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+form button {
+  display: block;
+  color: #fff;
+  background-color: #8e44ad;
+  border: 2px solid #8e44ad;
+  padding: 10px 0;
+  width: 100%;
+  border-radius: 4px;
+}
+
+form input[type="radio"] {
+  width: initial;
+  margin-right: 10px;
+}
+
+.form-control small {
+  color: tomato;
+  visibility: hidden;
+}
+
+.form-control .success {
+
+  input,
   select,
   textarea {
-    border: 2px solid #f0f0f0;
-    padding: 10px;
-    font-size: 14px;
-    width: 100%;
+    border-color: #2ecc71;
   }
-  form button {
-    display: block;
-    color: #fff;
-    background-color: #8e44ad;
-    border: 2px solid #8e44ad;
-    padding: 10px 0;
-    width: 100%;
-    border-radius: 4px;
-  }
-  form input[type="radio"] {
-    width: initial;
-    margin-right: 10px;
-  }
-  
-  .form-control small {
-      color: tomato;
-      visibility: hidden;
-  }
-.form-control .success {
-    input, select, textarea{
-    border-color:  #2ecc71;
-    }
 }
-form .file-up{
-  input{
 
-    border:none;
+form .file-up {
+  input {
+
+    border: none;
   }
 }
+
 .err {
-    color:  tomato;
+  color: tomato;
 }
+
 /*フォームスタイル終わり*/
+
 /* レスポンシブ */
-@media (min-width:600px){
-  main{
-    margin: 40px;
+@media (min-width:600px) {
+  header {
+    margin: 0;
+   
+  }
+  .logo{
+    display: block;
+  }
+  main {
+    margin: 50px 40px;
+  }
+  nav{
+    padding:0 40px;
+  }
+  .nav-ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    list-style-type: none;
+  }
+  .pcmenu{
+    display: block;
+  }
+  .hamburger {
+    display: none;
   }
 }
-@media (min-width:1440px){
-  main{
-    margin: 40px 150px;
-    padding:20px 60px;
+
+@media (min-width:1440px) {
+  header {
+    margin: 0 ;
+    
   }
+  nav{
+    padding:0 150px;
+  }
+  main {
+    margin: 50px 150px 0;
+    padding: 20px 60px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+  .logo{
+    display: block;
+  }
+  .nav-ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    list-style-type: none;
+  }
+ .pcmenu{
+   display: block;
+ }
+
 }

@@ -5,6 +5,13 @@ if (!isset($_SESSION)) {
 require_once('../classes/UserLogic.php');
 require_once('../classes/functions.php');
 ini_set('display_errors', "On");
+// ログインしているか判定、していなかったら新規登録画面へ返す
+$result = UserLogic::checklogin();
+if (!$result) {
+    $_SESSION['login_err'] = 'ユーザーを登録してログインしてください';
+    header('Location:http://localhost:8889/dating_app/public/signup_form.php');
+    return;
+}
 $login_user = $_SESSION['login_user'];
 error_reporting(E_ALL & ~E_NOTICE);
 $user = new UserLogic;
@@ -18,14 +25,18 @@ $userdata = $user->viewprofile($login_user['email']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../lib/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <title>マイページ</title>
 </head>
 
 <body>
+<?php
+require_once('navmenu.php');
+?>
     <main>
-        <header>
+       
             <h2>マイページ</h2>
-        </header>
+       
 
         <form action="check_profile.php" method="POST" id="form">
             <input type="hidden" name="user_id" value="<?php echo  h($login_user['user_id']); ?>">
@@ -147,7 +158,7 @@ $userdata = $user->viewprofile($login_user['email']);
 
         </form>
     </main>
-
+<script src="../lib/script.js"></script>
 </body>
 
 </html>
