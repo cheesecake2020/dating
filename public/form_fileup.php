@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 require_once('../classes/UserLogic.php');
 require_once('../classes/functions.php');
 ini_set('display_errors', "On");
@@ -7,9 +9,7 @@ $login_user = $_SESSION['login_user'];
 
 
 ?>
-<!-- ①フォームの説明 -->
-<!-- ②$_FILEの確認 -->
-<!-- ③バリデーション -->
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -26,11 +26,20 @@ $login_user = $_SESSION['login_user'];
         <form enctype="multipart/form-data" action="check_fileup.php" method="POST">
 
             <label class="file-up">写真を選択してください
-                <input type="hidden" name="MAX_FILE_SIZE" value="32768" />
+                <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
                 <input name="img" type="file" accept="image/*" />
             </label>
+            <!-- エラーがあれば表示 -->
+            <?php if (isset($error)) : ?>
+                <?php foreach ($error as $val) : ?>
+                    <p class="err"><?php echo $val; ?></p>
+                <?php endforeach; ?>
+            <?php endif; ?><!-- エラー表示おわり -->
+
             <button type="submit">送信</button>
         </form>
+        
+        <button><a href="editprofile.php">戻る</a></button>
         <div>
             <?php foreach ($files as $file) : ?>
 

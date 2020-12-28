@@ -65,8 +65,9 @@ function getState($adress,$states){
         // 値を表示
     return $val;
     }
+    }
 }
-}
+
 // 血液型配列
 $blood_types = [
     ''=>'選択下さい',

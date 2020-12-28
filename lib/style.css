@@ -72,6 +72,10 @@ form input[type="radio"] {
   border-color: #2ecc71;
 }
 
+form .file-up input {
+  border: none;
+}
+
 .err {
   color: tomato;
 }

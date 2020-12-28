@@ -13,8 +13,7 @@ if (!$result) {
 $login_user = $_SESSION['login_user'];
 $user = new UserLogic;
 $userdata = $user->viewprofile($login_user['email']);
-
-
+$userimg = $user->viewImg($login_user['user_id']);
 ?>
 
 
@@ -31,16 +30,18 @@ $userdata = $user->viewprofile($login_user['email']);
 <body>
     <main>
         <h2>マイページ</h2>
-        <p>ログインユーザー：<?php echo h($login_user['name']); ?></p>
-        <p>メールアドレス：<?php echo h($login_user['email']); ?></p>
-        <p>プロフィール写真:未設定</p>
+        <?php foreach ($userimg as $img) : ?>
+            <img src="<?php echo "{$img['img_path']}"; ?>" alt="プロフィール写真" width="100px">
+            <?php endforeach; ?>
+            
+            <p>ユーザー名：<?php echo h($login_user['name']); ?></p>
         <?php foreach ($userdata as $val) : ?>
             <p>性別：<?php echo setGender($val['gender']); ?></p>
             <p>誕生日：<?php echo $val['birthdate']; ?></p>
             <p>年齢：<?php echo getAge($val['birthdate']); ?>歳</p>
-            <p>居住地：<?php echo getState($val['state'],$states);?></p>
-            <p>趣味：<?php echo$val['hobby'];?></p>
-            <p>性格：<?php echo$val['personality'];?></p>
+            <p>居住地：<?php echo getState($val['state'], $states); ?></p>
+            <p>趣味：<?php echo $val['hobby']; ?></p>
+            <p>性格：<?php echo $val['personality']; ?></p>
 
 
 
@@ -49,10 +50,10 @@ $userdata = $user->viewprofile($login_user['email']);
 
         <p><a href="editprofile.php">プロフィール</a>を編集しますか？</p>
         <form action="logout.php" method="POST">
-            <button type="submit" >ログアウト</button>
-        
+            <button type="submit">ログアウト</button>
+
         </form>
-        </main>
+    </main>
 </body>
 
 </html>

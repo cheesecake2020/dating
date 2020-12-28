@@ -170,7 +170,7 @@ class UserLogic extends Dbc
     /**
      * プロフィール表示
      * @param string $email
-     * @return bool $user
+     * @return bool $userData
      */
     public function viewprofile($email)
     {
@@ -194,6 +194,58 @@ class UserLogic extends Dbc
             echo 'SQL：' . $sql;
             $pdo->rollBack();
             
+        }
+    }
+ /**
+     * プロフィールファイルの保存
+     * @param string $filenameファイル名
+     * @param string $save_path保存先のパス
+     * @param int $user_id 誰の画像か
+     * @return bool $result
+     */
+    public function fileSave($filename,$save_path,$user_id)
+    {
+        $result=false;
+        $sql = "INSERT INTO images (img_name,img_path,user_id) VALUE (?,?,?)";
+        $pdo = $this->dbConnect();
+        $pdo->beginTransaction();
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, (string)h($filename), PDO::PARAM_STR);
+            $stmt->bindValue(2, (string)h($save_path), PDO::PARAM_STR);
+            $stmt->bindValue(3, (int)h($user_id), PDO::PARAM_INT);
+
+            $result = $stmt->execute();
+            $pdo->commit();
+            return $result;
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            $pdo->rollBack();
+            return $result;
+        }
+    }
+    /**
+    * ファイルデータの取得
+    * @param int $user_id 誰の画像か
+    * @return array $filedata
+    */
+    public function viewImg($user_id){
+        $sql ="SELECT * FROM images WHERE user_id=?";
+        $pdo = $this->dbConnect();
+        $pdo->beginTransaction();
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, (string)h($user_id), PDO::PARAM_INT);
+
+            $stmt->execute();
+            $filedata =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $pdo->commit();
+            return $filedata;
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            $pdo->rollBack();
         }
     }
 }
