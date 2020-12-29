@@ -174,12 +174,12 @@ class UserLogic extends Dbc
      */
     public function viewprofile($email)
     {
-       
+
         // SQLの準備
         $sql = "SELECT * FROM $this->table_name WHERE email = ?";
         $pdo = $this->dbConnect();
         $pdo->beginTransaction();
-       
+
         try {
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, (string)h($email), PDO::PARAM_STR);
@@ -188,24 +188,22 @@ class UserLogic extends Dbc
             $userData = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $pdo->commit();
             return $userData;
-           
         } catch (\Exception $e) {
             echo '<br>えらー：' . $e;
             echo 'SQL：' . $sql;
             $pdo->rollBack();
-            
         }
     }
- /**
+    /**
      * プロフィールファイルの保存
      * @param string $filenameファイル名
      * @param string $save_path保存先のパス
      * @param int $user_id 誰の画像か
      * @return bool $result
      */
-    public function fileSave($filename,$save_path,$user_id)
+    public function fileSave($filename, $save_path, $user_id)
     {
-        $result=false;
+        $result = false;
         $sql = "INSERT INTO images (img_name,img_path,user_id) VALUE (?,?,?)";
         $pdo = $this->dbConnect();
         $pdo->beginTransaction();
@@ -226,12 +224,13 @@ class UserLogic extends Dbc
         }
     }
     /**
-    * ファイルデータの取得
-    * @param int $user_id 誰の画像か
-    * @return array $filedata
-    */
-    public function viewImg($user_id){
-        $sql ="SELECT * FROM images WHERE user_id=?";
+     * ファイルデータの取得
+     * @param int $user_id 誰の画像か
+     * @return array $filedata
+     */
+    public function viewImg($user_id)
+    {
+        $sql = "SELECT * FROM images WHERE user_id=?";
         $pdo = $this->dbConnect();
         $pdo->beginTransaction();
         try {
@@ -247,5 +246,67 @@ class UserLogic extends Dbc
             echo 'SQL：' . $sql;
             $pdo->rollBack();
         }
+    }
+    /**
+     * useridから性別を取得
+     * @param int $userid
+     * @return int $gender
+     */
+    public static function getgender($userid)
+    {
+        $pdo = new Dbc();
+        // SQLの準備
+        $sql = 'SELECT gender FROM users WHERE user_id = ?';
+        // useridを配列に入れる
+        $arr = [];
+        $arr[] = $userid;
+
+        try {
+            $stmt = $pdo->dbConnect()->prepare($sql);
+            // SQLの実行
+            $row=$stmt->execute($arr);
+            // SQLの結果を返す
+            while ($row = $stmt->fetch()) {
+                return $row['gender'];
+            }
+            
+        } catch (\Exception $e) {
+            echo $e;
+            return false;
+        }
+    }
+    /**
+     * 異性のデータ取得
+     * @param int $gender
+     * @return 
+     */
+    public function getDifferent($gender)
+    {
+        // データ型変える
+        $gender =(int)($gender);
+        // 異性の番号を取得
+        $differnt_sex=0;
+            if ($gender === 1) {
+                $differnt_sex = 2;     
+            } elseif ($gender === 2) {
+                $differnt_sex = 1;
+            }
+            
+        $sql = "SELECT * FROM users INNER JOIN images ON users.user_id = images.user_id WHERE users.gender=?";
+        $pdo = $this->dbConnect();
+        $pdo->beginTransaction();
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, (int)h($differnt_sex), PDO::PARAM_INT);
+            $stmt->execute();
+            $result =$stmt->fetchAll(PDO::FETCH_ASSOC);
+            $pdo->commit();
+            return $result;
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            $pdo->rollBack();
+        }
+
     }
 }

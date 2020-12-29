@@ -11,15 +11,9 @@ if($result){
 }
 $login_err = isset($_SESSION['login_err']) ? $_SESSION['login_err'] : null;
 unset($_SESSION['login_err']);
+require_once('header.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>ユーザー登録画面</title>
-</head>
+
 <body>
 <main>
 

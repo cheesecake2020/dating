@@ -14,22 +14,8 @@ $login_user = $_SESSION['login_user'];
 $user = new UserLogic;
 $userdata = $user->viewprofile($login_user['email']);
 $userimg = $user->viewImg($login_user['user_id']);
-?>
 
-
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../lib/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <title>マイページ</title>
-</head>
-
-<body>
-<?php
+require_once('header.php');
 require_once('navmenu.php');
 ?>
     <main>
@@ -54,7 +40,7 @@ require_once('navmenu.php');
 
         <p><a href="editprofile.php">プロフィール</a>を編集しますか？</p>
         <form action="logout.php" method="POST">
-            <button type="submit">ログアウト</button>
+        <input type="submit" value="ログアウト" name="logout">
 
         </form>
     </main>

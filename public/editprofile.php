@@ -16,7 +16,7 @@ $login_user = $_SESSION['login_user'];
 error_reporting(E_ALL & ~E_NOTICE);
 $user = new UserLogic;
 $userdata = $user->viewprofile($login_user['email']);
-// var_dump($userdata);
+ 
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -48,13 +48,13 @@ require_once('navmenu.php');
             </div>
             <div class="form-control">
                 <?php foreach ($userdata as $user) : ?>
-                    <label for="gender" class="type">性別
-                        <input type="radio" value="1" name="gender" checked=" <?php if ($user['gender'] === 1) echo "checked"; ?>" required>男性
-                        <input type="radio" value="2" name="gender" checked="<?php if ($user['gender'] === 2) echo "checked"; ?>" required>女性
+                    <label for="gender" class="type">性別 </label>
+                        <input type="radio" value="1" name="gender" <?php if($user['gender'] === '1'){echo "checked";}  ?> required>男性
+                        <input type="radio" value="2" name="gender" <?php if($user['gender'] === '2') {echo "checked";}?> required>女性
                         <?php if (!$gender) : ?>
                             <p class="err"><?php echo $error['gender']; ?></p>
                         <?php endif; ?>
-                    </label>
+                   
             </div>
             <div class="form-control">
                 <label for="blood_type">血液型
@@ -154,7 +154,7 @@ require_once('navmenu.php');
         <a href="mypage.php">戻る</a>
 
         <form action="logout.php" method="POST">
-            <button type="submit" name="logout">ログアウト</button>
+        <input type="submit" value="ログアウト" name="logout">
 
         </form>
     </main>

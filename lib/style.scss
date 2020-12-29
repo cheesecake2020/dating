@@ -65,7 +65,14 @@ nav {
 .hamburger:focus {
   outline: none;
 }
-
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+.box{
+  display: inline-block;
+  width: 200px;
+}
 .nav-ul li a{
   display: flex;
   align-items: center;
@@ -100,7 +107,6 @@ button {
   margin-bottom: 10px;
   padding-bottom: 8px;
 }
-
 form input,
 select,
 textarea {
@@ -109,7 +115,6 @@ textarea {
   font-size: 14px;
   width: 100%;
 }
-
 form button {
   display: block;
   color: #fff;
@@ -119,38 +124,32 @@ form button {
   width: 100%;
   border-radius: 4px;
 }
-
 form input[type="radio"] {
   width: initial;
   margin-right: 10px;
 }
-
 .form-control small {
   color: tomato;
   visibility: hidden;
 }
-
 .form-control .success {
-
   input,
   select,
   textarea {
     border-color: #2ecc71;
   }
 }
-
 form .file-up {
   input {
 
     border: none;
   }
 }
-
 .err {
   color: tomato;
 }
 
-/*フォームスタイル終わり*/
+
 
 /* レスポンシブ */
 @media (min-width:600px) {

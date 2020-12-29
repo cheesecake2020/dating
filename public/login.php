@@ -32,24 +32,15 @@ if (!$result) {
     header('Location:http://localhost:8889/dating_app/public/login_form.php');
     return;
 } 
-
+require_once('header.php');
 
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>ログイン完了</title>
-</head>
 
 <body>
     <main>
         <h2>ログイン完了</h2>
         <p>ログインしました！</p>
-        <a href="mypage.php">マイページへ</a>
+        <a href="editprofile.php">プロフィール作成</a>
     </main>
 </body>
 
