@@ -18,14 +18,21 @@ $result = $user->getDifferent($gender);
 
 require_once('header.php');
 require_once('navmenu.php');
+
+// echo "<pre>";
+// var_dump($result);
+// echo "<pre>";
 ?>
 <main>
 
     <div class="flex">
+
         <?php foreach ($result as $user) : ?>
             <div class="box">
-            <img src="<?php echo h($user['img_path']); ?>" alt="プロフィール写真" width="100px">
-            <p><?php echo h($user['name']); ?><?php echo getAge($user['birthdate']); ?>歳</p>
+                <a href="other_page.php?id=<?php echo h($user['user_id']); ?>">
+                    <img src="<?php echo h($user['profile_path']); ?>" alt="プロフィール写真" width="100px">
+                </a>
+                <p><?php echo h($user['name']); ?><?php echo getAge($user['birthdate']); ?>歳</p>
             </div>
         <?php endforeach; ?>
 

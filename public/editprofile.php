@@ -43,11 +43,16 @@ require_once('navmenu.php');
             <div class="form-control">
                 <p>お名前：<?php echo h($login_user['name']); ?></p>
             </div>
+            <?php foreach ($userdata as $user) : ?>
             <div class="form-control">
-                <p>プロフィール写真：<a href="form_fileup.php">未設定</a></p>
+                <?php if($user['profile_path']===''):?>
+                    <p>写真が設定されていません</p>
+                    <?php else:?>
+                <img src="<?php echo $user['profile_path']; ?>" alt="プロフィール写真">
+                <?php endif;?>
+                <a href="form_fileup.php">写真を編集する</a>
             </div>
             <div class="form-control">
-                <?php foreach ($userdata as $user) : ?>
                     <label for="gender" class="type">性別 </label>
                         <input type="radio" value="1" name="gender" <?php if($user['gender'] === '1'){echo "checked";}  ?> required>男性
                         <input type="radio" value="2" name="gender" <?php if($user['gender'] === '2') {echo "checked";}?> required>女性

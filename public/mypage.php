@@ -20,18 +20,18 @@ require_once('navmenu.php');
 ?>
     <main>
         <h2>マイページ</h2>
-        <?php foreach ($userimg as $img) : ?>
-            <img src="<?php echo "{$img['img_path']}"; ?>" alt="プロフィール写真" width="100px">
-            <?php endforeach; ?>
+        <?php foreach ($userdata as $user) : ?>
+        
+            <img src="<?php echo h($user['profile_path']); ?>" alt="プロフィール写真" width="100px">
+        
             
             <p>ユーザー名：<?php echo h($login_user['name']); ?></p>
-        <?php foreach ($userdata as $val) : ?>
-            <p>性別：<?php echo setGender($val['gender']); ?></p>
-            <p>誕生日：<?php echo $val['birthdate']; ?></p>
-            <p>年齢：<?php echo getAge($val['birthdate']); ?>歳</p>
-            <p>居住地：<?php echo getState($val['state'], $states); ?></p>
-            <p>趣味：<?php echo $val['hobby']; ?></p>
-            <p>性格：<?php echo $val['personality']; ?></p>
+            <p>性別：<?php echo setGender($user['gender']); ?></p>
+            <p>誕生日：<?php echo $user['birthdate']; ?></p>
+            <p>年齢：<?php echo getAge($user['birthdate']); ?>歳</p>
+            <p>居住地：<?php echo getState($user['state'], $states); ?></p>
+            <p>趣味：<?php echo $user['hobby']; ?></p>
+            <p>性格：<?php echo $user['personality']; ?></p>
 
 
 

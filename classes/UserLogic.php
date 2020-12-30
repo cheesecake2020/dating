@@ -204,17 +204,20 @@ class UserLogic extends Dbc
     public function fileSave($filename, $save_path, $user_id)
     {
         $result = false;
-        $sql = "INSERT INTO images (img_name,img_path,user_id) VALUE (?,?,?)";
+        
+        $sql = "UPDATE $this->table_name SET profile_photo= :profile_photo, profile_path = :profile_path WHERE user_id =:user_id";
         $pdo = $this->dbConnect();
         $pdo->beginTransaction();
         try {
             $stmt = $pdo->prepare($sql);
-            $stmt->bindValue(1, (string)h($filename), PDO::PARAM_STR);
-            $stmt->bindValue(2, (string)h($save_path), PDO::PARAM_STR);
-            $stmt->bindValue(3, (int)h($user_id), PDO::PARAM_INT);
+            $stmt->bindValue(':profile_photo', (string)h($filename), PDO::PARAM_STR);
+            $stmt->bindValue(':profile_path', (string)h($save_path), PDO::PARAM_STR);
+            $stmt->bindValue(':user_id', (int)h($user_id), PDO::PARAM_INT);
 
-            $result = $stmt->execute();
+            $stmt->execute();
             $pdo->commit();
+           
+            $result = true;
             return $result;
         } catch (\Exception $e) {
             echo '<br>えらー：' . $e;
@@ -264,12 +267,11 @@ class UserLogic extends Dbc
         try {
             $stmt = $pdo->dbConnect()->prepare($sql);
             // SQLの実行
-            $row=$stmt->execute($arr);
+            $row = $stmt->execute($arr);
             // SQLの結果を返す
             while ($row = $stmt->fetch()) {
                 return $row['gender'];
             }
-            
         } catch (\Exception $e) {
             echo $e;
             return false;
@@ -283,23 +285,23 @@ class UserLogic extends Dbc
     public function getDifferent($gender)
     {
         // データ型変える
-        $gender =(int)($gender);
+        $gender = (int)($gender);
         // 異性の番号を取得
-        $differnt_sex=0;
-            if ($gender === 1) {
-                $differnt_sex = 2;     
-            } elseif ($gender === 2) {
-                $differnt_sex = 1;
-            }
-            
-        $sql = "SELECT * FROM users INNER JOIN images ON users.user_id = images.user_id WHERE users.gender=?";
+        $differnt_sex = 0;
+        if ($gender === 1) {
+            $differnt_sex = 2;
+        } elseif ($gender === 2) {
+            $differnt_sex = 1;
+        }
+
+        $sql = "SELECT * FROM users WHERE gender=?";
         $pdo = $this->dbConnect();
         $pdo->beginTransaction();
         try {
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, (int)h($differnt_sex), PDO::PARAM_INT);
             $stmt->execute();
-            $result =$stmt->fetchAll(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $pdo->commit();
             return $result;
         } catch (\Exception $e) {
@@ -307,6 +309,66 @@ class UserLogic extends Dbc
             echo 'SQL：' . $sql;
             $pdo->rollBack();
         }
+    }
+    /**
+     * 異性のid取得
+     * @param int $id
+     * @return 
+     */
+    public function getById($id)
+    {
+        if (empty($id)) {
+            exit('idがふせいです');
+        }
+        $sql = "SELECT * FROM  $this->table_name Where user_id = :id";
+        $pdo = $this->dbConnect();
+        $pdo->beginTransaction();
+        try {
+            $dbh = $this->dbConnect();
+            // sqlの準備
+            $stmt = $dbh->prepare($sql);
+            // プレースホルダーの設定SQLインジェクションを防ぐ
+            $stmt->bindValue(':id', (int)$id, \PDO::PARAM_INT);
+            // SQLの実行
+            $stmt->execute();
+            // 結果を取得
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            $pdo->rollBack();
+        }
+    }
 
+    /**
+     * 異性の画像データ取得
+     * @param int $id
+     * @return 
+     */
+    public function getByimageId($id)
+    {
+        if (empty($id)) {
+            exit('idがふせいです');
+        }
+        $sql = "SELECT * FROM  images Where user_id = :id";
+        $pdo = $this->dbConnect();
+        $pdo->beginTransaction();
+        try {
+            $dbh = $this->dbConnect();
+            // sqlの準備
+            $stmt = $dbh->prepare($sql);
+            // プレースホルダーの設定SQLインジェクションを防ぐ
+            $stmt->bindValue(':id', (int)$id, \PDO::PARAM_INT);
+            // SQLの実行
+            $stmt->execute();
+            // 結果を取得
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            $pdo->rollBack();
+        }
     }
 }
