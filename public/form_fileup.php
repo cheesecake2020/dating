@@ -49,6 +49,4 @@ $login_user = $_SESSION['login_user'];
         </div>
 
     </main>
-</body>
-
-</html>
+    <?php require_once('footer.php');?>

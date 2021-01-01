@@ -42,6 +42,4 @@ require_once('header.php');
         <p>ログインしました！</p>
         <a href="editprofile.php">プロフィール作成</a>
     </main>
-</body>
-
-</html>
+    <?php require_once('footer.php');?>

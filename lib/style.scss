@@ -1,3 +1,5 @@
+$Main: #8e44ad;
+$White:#fff;
 * {
   margin: 0;
   padding: 0;
@@ -149,6 +151,20 @@ form .file-up {
   color: tomato;
 }
 
+// いいねボタン
+#form button{
+  background-color: $White;
+  color:$Main;
+  font-weight: 700;
+  i{
+    margin-right:5px;
+  }
+}
+#form .like{
+  background-color: $Main;
+  color: $White;
+
+}
 
 
 /* レスポンシブ */

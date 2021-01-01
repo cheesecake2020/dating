@@ -56,5 +56,4 @@ if(count($err)===0){
         <?php endif;?>
         <a href="signup_form.php">戻る</a>
     </main>
-</body>
-</html>
+    <?php require_once('footer.php');?>

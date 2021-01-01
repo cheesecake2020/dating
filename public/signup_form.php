@@ -39,5 +39,4 @@ require_once('header.php');
     </form>
     <a href="login_form.php">ログインする</a>
 </main>
-</body>
-</html>
+<?php require_once('footer.php');?>

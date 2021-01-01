@@ -13,6 +13,4 @@
         <p>プロフィールを更新しました</p>
         <a href="mypage.php">マイページへ</a>
     </main>
-</body>
-
-</html>
+    <?php require_once('footer.php');?>

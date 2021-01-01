@@ -39,5 +39,4 @@ require_once('header.php');
     </form>
     <a href="signup_form.php">新規登録はこちら</a>
 </main>
-</body>
-</html>
+<?php require_once('footer.php');?>

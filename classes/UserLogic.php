@@ -341,34 +341,5 @@ class UserLogic extends Dbc
         }
     }
 
-    /**
-     * 異性の画像データ取得
-     * @param int $id
-     * @return 
-     */
-    public function getByimageId($id)
-    {
-        if (empty($id)) {
-            exit('idがふせいです');
-        }
-        $sql = "SELECT * FROM  images Where user_id = :id";
-        $pdo = $this->dbConnect();
-        $pdo->beginTransaction();
-        try {
-            $dbh = $this->dbConnect();
-            // sqlの準備
-            $stmt = $dbh->prepare($sql);
-            // プレースホルダーの設定SQLインジェクションを防ぐ
-            $stmt->bindValue(':id', (int)$id, \PDO::PARAM_INT);
-            // SQLの実行
-            $stmt->execute();
-            // 結果を取得
-            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-            return $result;
-        } catch (\Exception $e) {
-            echo '<br>えらー：' . $e;
-            echo 'SQL：' . $sql;
-            $pdo->rollBack();
-        }
-    }
+    
 }

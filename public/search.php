@@ -41,3 +41,4 @@ require_once('navmenu.php');
 
 
 </main>
+<?php require_once('footer.php');?>

@@ -44,7 +44,4 @@ require_once('navmenu.php');
 
         </form>
     </main>
-    <script src="../lib/script.js"></script>
-</body>
-
-</html>
+    <?php require_once('footer.php');?>

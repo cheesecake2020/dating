@@ -175,6 +175,21 @@ form .file-up input {
   color: tomato;
 }
 
+#form button {
+  background-color: #fff;
+  color: #8e44ad;
+  font-weight: 700;
+}
+
+#form button i {
+  margin-right: 5px;
+}
+
+#form .like {
+  background-color: #8e44ad;
+  color: #fff;
+}
+
 /* レスポンシブ */
 @media (min-width: 600px) {
   header {

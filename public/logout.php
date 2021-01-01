@@ -32,5 +32,4 @@ UserLogic::logout();
         <a href="login_form.php">ログイン画面へ</a>
         
     </main>
-</body>
-</html>
+    <?php require_once('footer.php');?>
