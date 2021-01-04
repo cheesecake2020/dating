@@ -21,15 +21,65 @@ class LikeLogic extends Dbc
             $stmt->bindValue(1, (int)h($userid), PDO::PARAM_INT);
             $stmt->bindValue(2, (int)h($other_userid), PDO::PARAM_INT);
             $stmt->execute();
-            $row = $stmt->fetch();
-           
-                return $row;
-            
+            $result = $stmt->fetch();
+            return $result;
         } catch (\Exception $e) {
             echo '<br>えらー：' . $e;
             echo 'SQL：' . $sql;
-            return false;
+            return '失敗';
         }
     
+    }
+      /**
+     * いいねを登録
+     * @param int $userid,$other_userid
+     * @return  $result
+     */
+    public  function sendLike($userid,$other_userid)
+    {
+        $result = false;
+        $sql = "INSERT INTO $this->table_name (send_like_userid,now_page_profile_id) VALUES (?,?)";
+        $pdo = $this->dbConnect();
+        $pdo->beginTransaction();
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, (int)h($userid), PDO::PARAM_INT);
+            $stmt->bindValue(2, (int)h($other_userid), PDO::PARAM_INT);
+            $stmt->execute();
+            $pdo->commit();
+            $result = true;
+            return $result;
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            $pdo->rollBack();
+            return $result;
+        }
+    }
+      /**
+     * いいねを削除
+     * @param int $userid,$other_userid
+     * @return  $result
+     */
+    public  function DeleteLike($userid,$other_userid)
+    {
+        $result = false;
+        $sql = "DELETE FROM $this->table_name WHERE send_like_userid = ? AND now_page_profile_id=?";
+        $pdo = $this->dbConnect();
+        $pdo->beginTransaction();
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, (int)h($userid), PDO::PARAM_INT);
+            $stmt->bindValue(2, (int)h($other_userid), PDO::PARAM_INT);
+            $stmt->execute();
+            $pdo->commit();
+            $result = true;
+            return $result;
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            $pdo->rollBack();
+            return $result;
+        }
     }
 }

@@ -152,18 +152,23 @@ form .file-up {
 }
 
 // いいねボタン
-#form button{
+#likeform .nolike{
   background-color: $White;
   color:$Main;
   font-weight: 700;
+  transition: 0.7s ease-in-out;
   i{
     margin-right:5px;
   }
 }
-#form .like{
+#likeform .like{
   background-color: $Main;
   color: $White;
-
+  font-weight: 700;
+  transition: 0.7s ease-in-out;
+  i{
+    margin-right:5px;
+  }
 }
 
 

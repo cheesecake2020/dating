@@ -178,20 +178,16 @@ class UserLogic extends Dbc
         // SQLの準備
         $sql = "SELECT * FROM $this->table_name WHERE email = ?";
         $pdo = $this->dbConnect();
-        $pdo->beginTransaction();
-
         try {
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, (string)h($email), PDO::PARAM_STR);
-
             $stmt->execute();
             $userData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $pdo->commit();
             return $userData;
         } catch (\Exception $e) {
             echo '<br>えらー：' . $e;
             echo 'SQL：' . $sql;
-            $pdo->rollBack();
+            return $e;
         }
     }
     /**
@@ -204,7 +200,7 @@ class UserLogic extends Dbc
     public function fileSave($filename, $save_path, $user_id)
     {
         $result = false;
-        
+
         $sql = "UPDATE $this->table_name SET profile_photo= :profile_photo, profile_path = :profile_path WHERE user_id =:user_id";
         $pdo = $this->dbConnect();
         $pdo->beginTransaction();
@@ -213,10 +209,8 @@ class UserLogic extends Dbc
             $stmt->bindValue(':profile_photo', (string)h($filename), PDO::PARAM_STR);
             $stmt->bindValue(':profile_path', (string)h($save_path), PDO::PARAM_STR);
             $stmt->bindValue(':user_id', (int)h($user_id), PDO::PARAM_INT);
-
             $stmt->execute();
             $pdo->commit();
-           
             $result = true;
             return $result;
         } catch (\Exception $e) {
@@ -235,19 +229,16 @@ class UserLogic extends Dbc
     {
         $sql = "SELECT * FROM images WHERE user_id=?";
         $pdo = $this->dbConnect();
-        $pdo->beginTransaction();
         try {
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, (string)h($user_id), PDO::PARAM_INT);
-
             $stmt->execute();
             $filedata =  $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $pdo->commit();
             return $filedata;
         } catch (\Exception $e) {
             echo '<br>えらー：' . $e;
             echo 'SQL：' . $sql;
-            $pdo->rollBack();
+            return $e;
         }
     }
     /**
@@ -296,18 +287,16 @@ class UserLogic extends Dbc
 
         $sql = "SELECT * FROM users WHERE gender=?";
         $pdo = $this->dbConnect();
-        $pdo->beginTransaction();
         try {
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, (int)h($differnt_sex), PDO::PARAM_INT);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $pdo->commit();
             return $result;
         } catch (\Exception $e) {
             echo '<br>えらー：' . $e;
             echo 'SQL：' . $sql;
-            $pdo->rollBack();
+            return $e;
         }
     }
     /**
@@ -322,7 +311,6 @@ class UserLogic extends Dbc
         }
         $sql = "SELECT * FROM  $this->table_name Where user_id = :id";
         $pdo = $this->dbConnect();
-        $pdo->beginTransaction();
         try {
             $dbh = $this->dbConnect();
             // sqlの準備
@@ -337,9 +325,7 @@ class UserLogic extends Dbc
         } catch (\Exception $e) {
             echo '<br>えらー：' . $e;
             echo 'SQL：' . $sql;
-            $pdo->rollBack();
+            return $e;
         }
     }
-
-    
 }
