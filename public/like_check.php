@@ -20,24 +20,26 @@ $token = filter_input(INPUT_POST, 'csrf_token');
 
 // トークンがない、もしくは一致しない場合処理を中止
 if (!isset($_SESSION['csrf_token']) || $token !== $_SESSION['csrf_token']) {
-    die('不正なリクエストです');
+    exit('不正なリクエストです');
 }
-unset($_SESSION['csrf_token']);//トークン削除
+unset($_SESSION['csrf_token']); //トークン削除
 
 // 値のバリデーション
 if (!$likeid = filter_input(INPUT_POST, 'like')) {
-   $err1 ='送信に失敗しました';
+    $err1 = '送信に失敗しました';
 }
 if (!$deleteid = filter_input(INPUT_POST, 'like_delete')) {
-   $err2 ='送信に失敗しました';
+    $err2 = '送信に失敗しました';
 }
 
 // エラーがない&いいねか削除判定
-if(!isset($err1)&& $_POST['like']){
+if (!isset($err1) && $_POST['like']) {
+    // いいねをDBに入れる
     $result = $like->sendLike($login_user['user_id'], $likeid);
     //    echo'成功しました';
 }
-if(!isset($err2)&& $_POST['like_delete']){
+if (!isset($err2) && $_POST['like_delete']) {
+    //いいねをDBから消す
     $result = $like->DeleteLike($login_user['user_id'], $deleteid);
     //    echo'取り消しました';
 }

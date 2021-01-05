@@ -24,8 +24,8 @@ require_once('navmenu.php');
 // echo "<pre>";
 ?>
 <main>
-
-    <div class="flex">
+<h1><i class="fas fa-search"></i>相手をさがす</h1>
+    <div class="flex-wrap">
 
         <?php foreach ($result as $user) : ?>
             <div class="box">

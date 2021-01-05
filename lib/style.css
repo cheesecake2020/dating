@@ -62,20 +62,26 @@ nav {
   font-weight: 700;
 }
 
-.hamburger {
-  background-color: transparent;
-  border: 0;
-  color: #444444;
-  font-size: 40px;
-  cursor: pointer;
-  margin: 0;
-}
-
-.hamburger:focus {
-  outline: none;
-}
-
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.item {
+  padding-left: 15px;
+}
+
+.br {
+  display: block;
+}
+
+time {
+  font-size: 7px;
+}
+
+.flex-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -86,6 +92,13 @@ nav {
 .box {
   display: inline-block;
   width: 200px;
+}
+
+.likeimg {
+  width: 60px;
+  height: 77px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .nav-ul li a {
@@ -111,7 +124,7 @@ nav {
 }
 
 main {
-  margin-top: 60px;
+  margin-top: 30px;
   background: #fff;
   padding: 20px 20px;
   border-radius: 6px;
@@ -175,12 +188,34 @@ form .file-up input {
   color: tomato;
 }
 
+.img {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin: 0;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#likeform {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 998;
+  margin-right: 20px;
+  display: inline-block;
+  width: 50%;
+}
+
 #likeform .nolike {
+  margin-top: 0;
   background-color: #fff;
   color: #8e44ad;
   font-weight: 700;
   -webkit-transition: 0.7s ease-in-out;
   transition: 0.7s ease-in-out;
+  border-radius: 10px;
 }
 
 #likeform .nolike i {
@@ -188,11 +223,13 @@ form .file-up input {
 }
 
 #likeform .like {
+  margin-top: 0;
   background-color: #8e44ad;
   color: #fff;
   font-weight: 700;
   -webkit-transition: 0.7s ease-in-out;
   transition: 0.7s ease-in-out;
+  border-radius: 10px;
 }
 
 #likeform .like i {
@@ -204,11 +241,17 @@ form .file-up input {
   header {
     margin: 0;
   }
+  #likeform {
+    margin-right: 100px;
+  }
   .logo {
     display: block;
   }
   main {
-    margin: 50px 40px;
+    margin: 50px 100px;
+  }
+  .br {
+    display: none;
   }
   nav {
     padding: 0 40px;
@@ -229,8 +272,8 @@ form .file-up input {
   .pcmenu {
     display: block;
   }
-  .hamburger {
-    display: none;
+  time {
+    font-size: 9px;
   }
 }
 
@@ -238,12 +281,19 @@ form .file-up input {
   header {
     margin: 0;
   }
+  .br {
+    display: none;
+  }
   nav {
     padding: 0 150px;
   }
   main {
-    margin: 50px 150px 0;
+    margin: 50px 300px 0;
     padding: 20px 60px;
+  }
+  #likeform {
+    margin-right: 300px;
+    width: 420px;
   }
   .hamburger {
     display: none;
@@ -266,6 +316,9 @@ form .file-up input {
   }
   .pcmenu {
     display: block;
+  }
+  time {
+    font-size: 10px;
   }
 }
 /*# sourceMappingURL=style.css.map */

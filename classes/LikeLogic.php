@@ -82,4 +82,26 @@ class LikeLogic extends Dbc
             return $result;
         }
     }
+    /**
+     * もらったいいねの表示
+     * @param int $userid
+     * @return  $result
+     */
+    public  function getLike($userid)
+    {
+        // SQL 自分にいいねを送った相手のプロフィールを取得
+        $sql = "SELECT * FROM $this->table_name JOIN users ON likes.send_like_userid = users.user_id WHERE now_page_profile_id = ?";
+        $pdo = $this->dbConnect();
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(1, (int)h($userid), PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e->getMessage();
+            echo 'SQL：' . $sql;
+            return '失敗';
+        }
+    }
 }

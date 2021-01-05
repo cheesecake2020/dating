@@ -21,9 +21,7 @@ require_once('navmenu.php');
     <main>
         <h2>マイページ</h2>
         <?php foreach ($userdata as $user) : ?>
-        
-            <img src="<?php echo h($user['profile_path']); ?>" alt="プロフィール写真" width="100px">
-        
+            <img class="img" src="<?php echo h($user['profile_path']); ?>" alt="プロフィール写真" >
             
             <p>ユーザー名：<?php echo h($login_user['name']); ?></p>
             <p>性別：<?php echo setGender($user['gender']); ?></p>
@@ -41,7 +39,6 @@ require_once('navmenu.php');
         <p><a href="editprofile.php">プロフィール</a>を編集しますか？</p>
         <form action="logout.php" method="POST">
         <input type="submit" value="ログアウト" name="logout">
-
         </form>
     </main>
     <?php require_once('footer.php');?>

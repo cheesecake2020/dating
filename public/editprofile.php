@@ -48,7 +48,7 @@ require_once('navmenu.php');
                 <?php if($user['profile_path']===''):?>
                     <p>写真が設定されていません</p>
                     <?php else:?>
-                <img src="<?php echo $user['profile_path']; ?>" alt="プロフィール写真">
+                <img class="img"src="<?php echo $user['profile_path']; ?>" alt="プロフィール写真">
                 <?php endif;?>
                 <a href="form_fileup.php">写真を編集する</a>
             </div>

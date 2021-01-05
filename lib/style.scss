@@ -1,5 +1,6 @@
 $Main: #8e44ad;
 $White:#fff;
+
 * {
   margin: 0;
   padding: 0;
@@ -25,71 +26,82 @@ nav {
   justify-content: space-between;
   padding: 0 15px;
   position: fixed;
-  top:0;
+  top: 0;
   left: 0;
   z-index: 999;
   background-color: #8e44ad;
   width: 100%;
-  
+
 }
-.logo{
+
+.logo {
   display: none;
 }
+
 .nav-ul {
-  display:flex;
+  display: flex;
   list-style-type: none;
-  
+
 }
 
 .nav-ul li a {
   display: inline-block;
   padding: 10px 20px;
   text-decoration: none;
-  color:#fff;
+  color: #fff;
   font-weight: 700;
-  
+
 }
 
 .logo a {
-  color:#fff;
+  color: #fff;
   font-weight: 700;
 }
 
-.hamburger {
-  background-color: transparent;
-  border: 0;
-  color: #444444;
-  font-size: 40px;
-  cursor: pointer;
-  margin: 0;
+.flex {
+  display: flex;
+  margin-bottom: 20px;
 }
-
-.hamburger:focus {
-  outline: none;
+.item{
+  padding-left: 15px;
 }
-.flex{
+// 改行
+.br{ display:block;}
+time{
+  font-size: 7px;
+}
+.flex-wrap{
   display: flex;
   flex-wrap: wrap;
 }
-.box{
+.box {
   display: inline-block;
   width: 200px;
 }
-.nav-ul li a{
+.likeimg{
+  width: 60px;
+  height: 77px;
+  object-fit: cover;
+}
+
+.nav-ul li a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-right:5px;
-  i{
-    margin-top:5px;
+  margin-right: 5px;
+
+  i {
+    margin-top: 5px;
     margin-right: 5px;
   }
 }
-.pcmenu{
+
+.pcmenu {
   display: none;
 }
+
 main {
-  margin-top: 60px;
+  margin-top: 30px;
   background: #fff;
   padding: 20px 20px;
   border-radius: 6px;
@@ -109,6 +121,7 @@ button {
   margin-bottom: 10px;
   padding-bottom: 8px;
 }
+
 form input,
 select,
 textarea {
@@ -117,6 +130,7 @@ textarea {
   font-size: 14px;
   width: 100%;
 }
+
 form button {
   display: block;
   color: #fff;
@@ -126,48 +140,79 @@ form button {
   width: 100%;
   border-radius: 4px;
 }
+
 form input[type="radio"] {
   width: initial;
   margin-right: 10px;
 }
+
 .form-control small {
   color: tomato;
   visibility: hidden;
 }
+
 .form-control .success {
+
   input,
   select,
   textarea {
     border-color: #2ecc71;
   }
 }
+
 form .file-up {
   input {
 
     border: none;
   }
 }
+
 .err {
   color: tomato;
 }
 
+.img {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin: 0;
+  height: 100%;
+  object-fit: cover;
+}
+
 // いいねボタン
-#likeform .nolike{
+#likeform{
+  position: fixed;
+  bottom:0;
+  right:0;
+  z-index: 998;
+  margin-right:20px;
+  display: inline-block;
+  width: 50%;
+}
+#likeform .nolike {
+  margin-top: 0;
   background-color: $White;
-  color:$Main;
+  color: $Main;
   font-weight: 700;
   transition: 0.7s ease-in-out;
-  i{
-    margin-right:5px;
+  border-radius: 10px;
+
+  i {
+    margin-right: 5px;
   }
 }
-#likeform .like{
+
+#likeform .like {
+  margin-top: 0;
   background-color: $Main;
   color: $White;
   font-weight: 700;
   transition: 0.7s ease-in-out;
-  i{
-    margin-right:5px;
+  border-radius: 10px;
+
+  i {
+    margin-right: 5px;
   }
 }
 
@@ -176,17 +221,22 @@ form .file-up {
 @media (min-width:600px) {
   header {
     margin: 0;
-   
   }
-  .logo{
+  #likeform{
+    margin-right:100px
+  }
+  .logo {
     display: block;
   }
+
   main {
-    margin: 50px 40px;
+    margin: 50px 100px;
   }
-  nav{
-    padding:0 40px;
+  .br{ display:none;}
+  nav {
+    padding: 0 40px;
   }
+
   .nav-ul {
     display: flex;
     align-items: center;
@@ -194,33 +244,41 @@ form .file-up {
     padding: 0;
     list-style-type: none;
   }
-  .pcmenu{
+
+  .pcmenu {
     display: block;
   }
-  .hamburger {
-    display: none;
+
+  time{
+    font-size: 9px;
   }
 }
 
 @media (min-width:1440px) {
   header {
-    margin: 0 ;
-    
+    margin: 0;
   }
-  nav{
-    padding:0 150px;
-  }
-  main {
-    margin: 50px 150px 0;
-    padding: 20px 60px;
+  .br{ display:none;}
+  nav {
+    padding: 0 150px;
   }
 
+  main {
+    margin: 50px 300px 0;
+    padding: 20px 60px;
+  }
+  #likeform{
+    margin-right:300px;
+    width: 420px;
+  }
   .hamburger {
     display: none;
   }
-  .logo{
+
+  .logo {
     display: block;
   }
+
   .nav-ul {
     display: flex;
     align-items: center;
@@ -228,8 +286,11 @@ form .file-up {
     padding: 0;
     list-style-type: none;
   }
- .pcmenu{
-   display: block;
- }
 
+  .pcmenu {
+    display: block;
+  }
+  time{
+    font-size: 10px;
+  }
 }

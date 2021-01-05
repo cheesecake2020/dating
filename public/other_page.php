@@ -33,8 +33,17 @@ require_once('navmenu.php');
 <main>
     <h2>プロフィール</h2>
     <?php foreach ($otherusers as $user) : ?>
-        <img src="<?php echo h($user['profile_path']); ?>" alt="プロフィール写真" width="100px">
-
+        <img class="img" src="<?php echo h($user['profile_path']); ?>" alt="プロフィール写真">
+        
+        <p>ユーザー名：<?php echo h($user['name']); ?></p>
+        <p>性別：<?php echo setGender($user['gender']); ?></p>
+        <p>誕生日：<?php echo h($user['birthdate']); ?></p>
+        <p>年齢：<?php echo getAge($user['birthdate']); ?>歳</p>
+        <p>居住地：<?php echo getState($user['state'], $states); ?></p>
+        <p>趣味：<?php echo h($user['hobby']); ?></p>
+        <p>性格：<?php echo h($user['personality']); ?></p>
+        <?php endforeach; ?>         
+        <button><a href="search.php">戻る</a></button>
         <form  method="POST" id="likeform">
             <input type="hidden" name="csrf_token" value="<?php echo h(setToken()); ?>">　
             <input type="hidden"  name="userid" value="<?php echo h($login_user['user_id']);?>">
@@ -47,17 +56,5 @@ require_once('navmenu.php');
                 <button class="like" type="submit"><i class="fas fa-heart"></i>いいねを送りました</button>
             <?php endif; ?>
         </form>
-
-        <p>ユーザー名：<?php echo h($user['name']); ?></p>
-        <p>性別：<?php echo setGender($user['gender']); ?></p>
-        <p>誕生日：<?php echo h($user['birthdate']); ?></p>
-        <p>年齢：<?php echo getAge($user['birthdate']); ?>歳</p>
-        <p>居住地：<?php echo getState($user['state'], $states); ?></p>
-        <p>趣味：<?php echo h($user['hobby']); ?></p>
-        <p>性格：<?php echo h($user['personality']); ?></p>
-    <?php endforeach; ?>
-
-
-    <button><a href="search.php">戻る</a></button>
 </main>
 <?php require_once('footer.php'); ?>
