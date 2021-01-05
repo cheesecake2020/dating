@@ -6,23 +6,23 @@
 # 主な機能
 基本的な機能を実装している。主な機能は以下のとおり。
 
-<li>1.ユーザー登録機能</li>
-<li>2.ログイン・ログアウト機能</li>
-<li>3.マイページ編集</li>
-<li>4．異性一覧・詳細表示</li>
-<li>5.いいね機能</li>
-<li>6.メッセージ機能(作成中）</li>
-<li>7.マッチング表示（お互いにいいねしていた場合にマッチングしています。と表示）</li>
-<li>8.スマートフォン対応</li>
+<li>ユーザー登録機能</li>
+<li>ログイン・ログアウト機能</li>
+<li>マイページ編集</li>
+<li>異性一覧・詳細表示</li>
+<li>いいね機能</li>
+<li>メッセージ機能(作成中）</li>
+<li>マッチング表示（お互いにいいねしていた場合にマッチングしています。と表示）</li>
+<li>スマートフォン対応</li>
 
 # 開発環境
-<li>・PHP7.4</li>
-<li>・JavaScript</li>
-<li>・MySQL5.5</li>
-<li>・HTML</li>
-<li>・SCSS</li>
-<li>・CSS</li>
+<li>PHP7.4</li>
+<li>JavaScript</li>
+<li>MySQL5.5</li>
+<li>HTML</li>
+<li>SCSS</li>
+<li>CSS</li>
 使用ツール
-<li>・MAMPP</li>
-<li>・JQuery(Ajax)</li>
-<li>・Font Awesome</li>
+<li>MAMPP</li>
+<li>JQuery(Ajax)</li>
+<li>Font Awesome</li>
