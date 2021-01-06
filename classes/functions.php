@@ -67,6 +67,51 @@ function getState($adress,$states){
     }
     }
 }
+/**
+ * 職業表示
+ * @param int arry
+ * @return string $val
+ */
+function getWork($adress,$works){
+    // 住所の配列の中から
+ foreach ($works as $key => $val) {
+    //  データベースと同じkeyがあれば
+    if ($adress === $key) {
+        // 値を表示
+    return $val;
+    }
+    }
+}
+/**
+ * 学歴表示
+ * @param int arry
+ * @return string $val
+ */
+function getSchool($adress,$school){
+    // 住所の配列の中から
+ foreach ($school as $key => $val) {
+    //  データベースと同じkeyがあれば
+    if ($adress === $key) {
+        // 値を表示
+    return $val;
+    }
+    }
+}
+/**
+ * 血液型表示
+ * @param int arry
+ * @return string $val
+ */
+function getBlood($adress,$blood_types){
+    // 住所の配列の中から
+ foreach ($blood_types as $key => $val) {
+    //  データベースと同じkeyがあれば
+    if ($adress === $key) {
+        // 値を表示
+    return $val;
+    }
+    }
+}
 
 // 血液型配列
 $blood_types = [

@@ -32,6 +32,7 @@ if (!$result) {
     header('Location:http://localhost:8889/dating_app/public/login_form.php');
     return;
 } 
+$title='ログイン';
 require_once('header.php');
 
 ?>

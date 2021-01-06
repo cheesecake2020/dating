@@ -11,10 +11,11 @@ if($result){
 }
 $login_err = isset($_SESSION['login_err']) ? $_SESSION['login_err'] : null;
 unset($_SESSION['login_err']);
+$title='ユーザー登録';
 require_once('header.php');
 ?>
 
-<body>
+
 <main>
 
     <h2>ユーザー登録フォーム</h2>

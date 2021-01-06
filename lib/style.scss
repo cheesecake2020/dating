@@ -17,7 +17,12 @@ body {
   background: #f9fbfe;
   min-height: 100vh;
 }
-
+// ログイン画面デザイン
+.home{
+  background: url("./mainimage.jpg") no-repeat center;
+  background-size: cover;
+  height: 100vh;
+}
 // メニュー
 nav {
   display: flex;
@@ -70,20 +75,34 @@ nav {
 time{
   font-size: 7px;
 }
-.flex-wrap{
-  display: flex;
-  flex-wrap: wrap;
-}
-.box {
-  display: inline-block;
-  width: 200px;
-}
 .likeimg{
   width: 60px;
   height: 77px;
   object-fit: cover;
 }
-
+.flex-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+// 異性一覧
+.box {
+  display: inline-block;
+ margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  p{
+    text-align: center;
+  }
+}
+.otherimg{
+  border-radius: 50%;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+// 終わり異性一覧
 .nav-ul li a {
   display: flex;
   align-items: center;
@@ -162,7 +181,6 @@ form input[type="radio"] {
 
 form .file-up {
   input {
-
     border: none;
   }
 }
@@ -179,7 +197,14 @@ form .file-up {
   height: 100%;
   object-fit: cover;
 }
-
+// マッチング表示
+.match{
+text-align: center;
+display: block;
+i{
+  color: palevioletred;
+}
+}
 // いいねボタン
 #likeform{
   position: fixed;
@@ -252,9 +277,14 @@ form .file-up {
   time{
     font-size: 9px;
   }
+  .otherimg{
+    width: 200px;
+    height: 200px;
+  }
 }
 
-@media (min-width:1440px) {
+@media (min-width:1440px) 
+{
   header {
     margin: 0;
   }
@@ -292,5 +322,9 @@ form .file-up {
   }
   time{
     font-size: 10px;
+  }
+  .otherimg{
+    width: 200px;
+    height: 200px;
   }
 }

@@ -14,7 +14,7 @@ if (!$result) {
 $login_user = $_SESSION['login_user'];
 $like = new LikeLogic;
 $getlikes = $like->getLike($login_user['user_id']);
-
+$title='いいね一覧';
 require_once('header.php');
 require_once('navmenu.php');
 

@@ -10,12 +10,12 @@ class LikeLogic extends Dbc
      * @param int $userid,$other_userid
      * @return  $result
      */
-    public  function ckeckLike($userid,$other_userid)
+    public  function ckeckLike($userid, $other_userid)
     {
         // SQLの準備
         $sql = "SELECT * FROM $this->table_name WHERE send_like_userid = ? AND now_page_profile_id = ?";
         $pdo = $this->dbConnect();
-       
+
         try {
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(1, (int)h($userid), PDO::PARAM_INT);
@@ -28,14 +28,13 @@ class LikeLogic extends Dbc
             echo 'SQL：' . $sql;
             return '失敗';
         }
-    
     }
-      /**
+    /**
      * いいねを登録
      * @param int $userid,$other_userid
      * @return  $result
      */
-    public  function sendLike($userid,$other_userid)
+    public  function sendLike($userid, $other_userid)
     {
         $result = false;
         $sql = "INSERT INTO $this->table_name (send_like_userid,now_page_profile_id) VALUES (?,?)";
@@ -56,12 +55,12 @@ class LikeLogic extends Dbc
             return $result;
         }
     }
-      /**
+    /**
      * いいねを削除
      * @param int $userid,$other_userid
      * @return  $result
      */
-    public  function DeleteLike($userid,$other_userid)
+    public  function DeleteLike($userid, $other_userid)
     {
         $result = false;
         $sql = "DELETE FROM $this->table_name WHERE send_like_userid = ? AND now_page_profile_id=?";
@@ -104,4 +103,34 @@ class LikeLogic extends Dbc
             return '失敗';
         }
     }
+    /**
+     * マッチングしているか
+     * @param int $userid $other_userid
+     * @return  $result
+     */
+    public  function checkMatch($userid, $other_userid)
+    {
+        $result = false;
+        // 自分がいいねしているか
+        if ($this->ckeckLike($userid, $other_userid)) {
+            // 相手もいいねしているか
+            $sql = "SELECT * FROM $this->table_name  WHERE now_page_profile_id = :userid AND send_like_userid =:otherid";
+            $pdo = $this->dbConnect();
+            try {
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue(':userid', (int)h($userid), PDO::PARAM_INT);
+                $stmt->bindValue(':otherid', (int)h($other_userid), PDO::PARAM_INT);
+                $stmt->execute();
+                $result = true;
+                return $result;
+            } catch (\Exception $e) {
+                echo '<br>えらー：' . $e->getMessage();
+                return '失敗';
+            }
+        } else {
+            // お互いにいいねしていなければfalse
+            return $result;
+        }
+    }
 }
+

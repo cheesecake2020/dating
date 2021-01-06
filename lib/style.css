@@ -17,6 +17,12 @@ body {
   min-height: 100vh;
 }
 
+.home {
+  background: url("./mainimage.jpg") no-repeat center;
+  background-size: cover;
+  height: 100vh;
+}
+
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -81,22 +87,40 @@ time {
   font-size: 7px;
 }
 
+.likeimg {
+  width: 60px;
+  height: 77px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .flex-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .box {
   display: inline-block;
-  width: 200px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.likeimg {
-  width: 60px;
-  height: 77px;
+.box p {
+  text-align: center;
+}
+
+.otherimg {
+  border-radius: 50%;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -198,6 +222,15 @@ form .file-up input {
      object-fit: cover;
 }
 
+.match {
+  text-align: center;
+  display: block;
+}
+
+.match i {
+  color: palevioletred;
+}
+
 #likeform {
   position: fixed;
   bottom: 0;
@@ -275,6 +308,10 @@ form .file-up input {
   time {
     font-size: 9px;
   }
+  .otherimg {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 @media (min-width: 1440px) {
@@ -319,6 +356,10 @@ form .file-up input {
   }
   time {
     font-size: 10px;
+  }
+  .otherimg {
+    width: 200px;
+    height: 200px;
   }
 }
 /*# sourceMappingURL=style.css.map */

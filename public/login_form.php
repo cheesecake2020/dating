@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require_once('../classes/UserLogic.php');
 $result = UserLogic::checklogin();
 if($result){
@@ -11,12 +10,14 @@ $err =$_SESSION;
 // セッションを消す
 $_SESSION = array();
 session_destroy();
+$title='ログイン';
 require_once('header.php');
 ?>
+<section class="home">
 
-<body>
+</section>
+
 <main>
-
     <h2>ログインフォーム</h2>
     <?php if(isset($login_err)):?>
         <p class="err"><?php echo $login_err;?></p>
@@ -38,5 +39,8 @@ require_once('header.php');
     <button type="submit">ログイン</button>
     </form>
     <a href="signup_form.php">新規登録はこちら</a>
-</main>
+
+    </main>
+
+
 <?php require_once('footer.php');?>

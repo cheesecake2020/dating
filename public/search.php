@@ -15,7 +15,7 @@ $user = new UserLogic;
 $gender = $user->getgender($login_user['user_id']);
 
 $result = $user->getDifferent($gender);
-
+$title='相手をさがす';
 require_once('header.php');
 require_once('navmenu.php');
 
@@ -24,13 +24,17 @@ require_once('navmenu.php');
 // echo "<pre>";
 ?>
 <main>
-<h1><i class="fas fa-search"></i>相手をさがす</h1>
+    <h1><i class="fas fa-search"></i>相手をさがす</h1>
     <div class="flex-wrap">
 
         <?php foreach ($result as $user) : ?>
             <div class="box">
                 <a href="other_page.php?id=<?php echo h($user['user_id']); ?>">
-                    <img src="<?php echo h($user['profile_path']); ?>" alt="プロフィール写真" width="100px">
+                    <?php if (empty($user['profile_path'])) : ?>
+                        <img class="otherimg" src="../lib/nophoto.svg" alt="デフォルトアカウント写真" width="100px">
+                    <?php else : ?>
+                        <img class="otherimg" src="<?php echo h($user['profile_path']); ?>" alt="プロフィール写真" width="100px">
+                    <?php endif; ?>
                 </a>
                 <p><?php echo h($user['name']); ?><?php echo getAge($user['birthdate']); ?>歳</p>
             </div>
@@ -41,4 +45,4 @@ require_once('navmenu.php');
 
 
 </main>
-<?php require_once('footer.php');?>
+<?php require_once('footer.php'); ?>
