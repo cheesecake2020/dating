@@ -22,6 +22,34 @@ body {
   background: url("./mainimage.jpg") no-repeat center;
   background-size: cover;
   height: 100vh;
+ 
+}
+.home::after {
+  content: '';
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.btn-primary{
+  background-color: $Main;
+  border: 2px solid $Main;
+  border-radius: 7px;
+}
+.text1{
+  padding-top:50px;
+  z-index: 10;
+  color:$White;
+  position: relative;
+}
+.mybox{
+  margin-top:80px;
+}
+.login{
+  display: block;
+  width: 100%;
 }
 // メニュー
 nav {
@@ -51,21 +79,27 @@ nav {
 
 .nav-ul li a {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 20px 20px 0;
   text-decoration: none;
   color: #fff;
   font-weight: 700;
-
 }
 
 .logo a {
   color: #fff;
   font-weight: 700;
+ 
 }
 
 .flex {
   display: flex;
   margin-bottom: 20px;
+  justify-content: space-around;
+}
+.btnflex {
+  display: flex;
+  margin-bottom: 20px;
+
 }
 .item{
   padding-left: 15px;
@@ -103,14 +137,13 @@ time{
   object-fit: cover;
 }
 // 終わり異性一覧
+
 .nav-ul li a {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-right: 5px;
-
   i {
-    margin-top: 5px;
     margin-right: 5px;
   }
 }
@@ -131,53 +164,6 @@ main {
   font-weight: 700;
 }
 
-button {
-  margin: 20px 0;
-}
-
-.form-control {
-  display: block;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
-}
-
-form input,
-select,
-textarea {
-  border: 2px solid #f0f0f0;
-  padding: 10px;
-  font-size: 14px;
-  width: 100%;
-}
-
-form button {
-  display: block;
-  color: #fff;
-  background-color: #8e44ad;
-  border: 2px solid #8e44ad;
-  padding: 10px 0;
-  width: 100%;
-  border-radius: 4px;
-}
-
-form input[type="radio"] {
-  width: initial;
-  margin-right: 10px;
-}
-
-.form-control small {
-  color: tomato;
-  visibility: hidden;
-}
-
-.form-control .success {
-
-  input,
-  select,
-  textarea {
-    border-color: #2ecc71;
-  }
-}
 
 form .file-up {
   input {
@@ -241,7 +227,9 @@ i{
   }
 }
 
-
+.btn-outline-primary a{
+  text-decoration: none;
+}
 /* レスポンシブ */
 @media (min-width:600px) {
   header {
@@ -260,18 +248,11 @@ i{
   .br{ display:none;}
   nav {
     padding: 0 40px;
+    height: 60px;
   }
-
-  .nav-ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    list-style-type: none;
-  }
-
   .pcmenu {
     display: block;
+    margin-bottom: 0;
   }
 
   time{
@@ -294,7 +275,7 @@ i{
   }
 
   main {
-    margin: 50px 300px 0;
+    margin: 60px 300px 0;
     padding: 20px 60px;
   }
   #likeform{
@@ -307,18 +288,15 @@ i{
 
   .logo {
     display: block;
+    padding-bottom: 5px;
   }
-
-  .nav-ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    list-style-type: none;
+  .text1{
+    padding-top:150px;
   }
 
   .pcmenu {
     display: block;
+    margin-bottom: 0;
   }
   time{
     font-size: 10px;

@@ -44,10 +44,12 @@ require_once('navmenu.php');
 
     <?php endforeach; ?>
 
+    <button class="btn btn-outline-primary mb-3"><a href="editprofile.php">プロフィールを編集</a></button>
 
-    <button><a href="editprofile.php">プロフィールを編集</a></button>
     <form action="logout.php" method="POST">
-        <input type="submit" value="ログアウト" name="logout">
+        <input class="btn btn-primary"type="submit" value="ログアウト" name="logout">
     </form>
+
+
 </main>
 <?php require_once('footer.php'); ?>

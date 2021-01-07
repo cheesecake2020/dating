@@ -37,6 +37,16 @@ function getAge($birtdate){
     $age=floor(($today-$birthday)/10000);
     return $age;
 }
+// function getGender($gender){
+//     if ($gender === '1') {
+//         return 'checked';
+//     } elseif ($gender === '2') {
+//         return 'checked';
+//     } else {
+//         return 'その他';
+//     }
+
+// }
 /**
  * 性別表示
  * @param int

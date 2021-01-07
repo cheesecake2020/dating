@@ -23,20 +23,24 @@ require_once('header.php');
         <p class="err"><?php echo $login_err;?></p>
     <?php endif;?>
     <form action="register.php" method="POST">
-    <div>
-    <label for="username">お名前：<input type="text" name="name"></label>
+    <div class="form-group">
+    <label for="username">お名前：</label>
+    <input class="form-control"type="text" name="name">
     </div>
-    <div>
-    <label for="email">メールアドレス：<input type="email" name="email"></label>
+    <div class="form-group">
+    <label for="email">メールアドレス：</label>
+    <input class="form-control"type="email" name="email">
     </div>
-    <div>
-    <label for="password">パスワード：<input type="password" name="password"></label>
+    <div class="form-group">
+    <label for="password">パスワード：</label>
+    <input class="form-control"type="password" name="password">
     </div>
-    <div>
-    <label for="password_conf">パスワード確認：<input type="password" name="password_conf"></label>
+    <div class="form-group">
+    <label for="password_conf">パスワード確認：</label>
+    <input class="form-control"type="password" name="password_conf">
     </div>
     <input type="hidden" name="csrf_token" value="<?php echo h(setToken());?>">
-    <button type="submit">新規登録</button>
+    <button type="submit" class="btn login btn-primary mb-2">新規登録</button>
     </form>
     <a href="login_form.php">ログインする</a>
 </main>

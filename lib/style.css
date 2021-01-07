@@ -23,6 +23,38 @@ body {
   height: 100vh;
 }
 
+.home::after {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.btn-primary {
+  background-color: #8e44ad;
+  border: 2px solid #8e44ad;
+  border-radius: 7px;
+}
+
+.text1 {
+  padding-top: 50px;
+  z-index: 10;
+  color: #fff;
+  position: relative;
+}
+
+.mybox {
+  margin-top: 80px;
+}
+
+.login {
+  display: block;
+  width: 100%;
+}
+
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -57,7 +89,7 @@ nav {
 
 .nav-ul li a {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 20px 20px 0;
   text-decoration: none;
   color: #fff;
   font-weight: 700;
@@ -69,6 +101,15 @@ nav {
 }
 
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.btnflex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -139,7 +180,6 @@ time {
 }
 
 .nav-ul li a i {
-  margin-top: 5px;
   margin-right: 5px;
 }
 
@@ -157,51 +197,6 @@ main {
 .err {
   color: red;
   font-weight: 700;
-}
-
-button {
-  margin: 20px 0;
-}
-
-.form-control {
-  display: block;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
-}
-
-form input,
-select,
-textarea {
-  border: 2px solid #f0f0f0;
-  padding: 10px;
-  font-size: 14px;
-  width: 100%;
-}
-
-form button {
-  display: block;
-  color: #fff;
-  background-color: #8e44ad;
-  border: 2px solid #8e44ad;
-  padding: 10px 0;
-  width: 100%;
-  border-radius: 4px;
-}
-
-form input[type="radio"] {
-  width: initial;
-  margin-right: 10px;
-}
-
-.form-control small {
-  color: tomato;
-  visibility: hidden;
-}
-
-.form-control .success input,
-.form-control .success select,
-.form-control .success textarea {
-  border-color: #2ecc71;
 }
 
 form .file-up input {
@@ -269,6 +264,10 @@ form .file-up input {
   margin-right: 5px;
 }
 
+.btn-outline-primary a {
+  text-decoration: none;
+}
+
 /* レスポンシブ */
 @media (min-width: 600px) {
   header {
@@ -288,22 +287,11 @@ form .file-up input {
   }
   nav {
     padding: 0 40px;
-  }
-  .nav-ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding: 0;
-    list-style-type: none;
+    height: 60px;
   }
   .pcmenu {
     display: block;
+    margin-bottom: 0;
   }
   time {
     font-size: 9px;
@@ -325,7 +313,7 @@ form .file-up input {
     padding: 0 150px;
   }
   main {
-    margin: 50px 300px 0;
+    margin: 60px 300px 0;
     padding: 20px 60px;
   }
   #likeform {
@@ -337,22 +325,14 @@ form .file-up input {
   }
   .logo {
     display: block;
+    padding-bottom: 5px;
   }
-  .nav-ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding: 0;
-    list-style-type: none;
+  .text1 {
+    padding-top: 150px;
   }
   .pcmenu {
     display: block;
+    margin-bottom: 0;
   }
   time {
     font-size: 10px;
