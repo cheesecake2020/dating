@@ -28,7 +28,8 @@ $islike = $like->ckeckLike($login_user['user_id'], $otherid);
 $match = $like->checkMatch($login_user['user_id'], $otherid);
 require_once('header.php');
 require_once('navmenu.php');
-// var_dump($match);
+
+
 ?>
 <main>
     <h2>プロフィール</h2>

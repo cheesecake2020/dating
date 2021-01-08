@@ -149,22 +149,19 @@ class LikeLogic extends Dbc
     
      /**
      * マッチング相手のデータを取得
-     * @param int $matchid
-     * @param int $count
+     * @param str $matchid
      * @return  array $result
      */
     public  function MatchUser($matchid)
     {
-        // 配列をカンマで加工
-        $val=implode(',',$matchid);
+        
         // INでidを取得
-            $sql = "SELECT* FROM users WHERE user_id IN (?)";
+            $sql = "SELECT* FROM users WHERE user_id IN ($matchid)";
             $pdo = $this->dbConnect();
             try {
                 $stmt = $pdo->prepare($sql);
-                $stmt->bindValue(1, (string)h($val), PDO::PARAM_STR);
-                $stmt->execute();
-                $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+               $stmt->execute();
+               $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
                 return $result;
             } catch (\Exception $e) {
                 echo '<br>えらー：' . $e->getMessage();
@@ -201,11 +198,13 @@ class LikeLogic extends Dbc
      */
     public  function checkMatch($userid, $other_userid)
     {
-
+        $userid = (int)($userid);
+        $other_userid = (int)($other_userid);
         // 自分がいいねしているか
-        if ($this->ckeckLike($userid, $other_userid)) {
+        $islike=$this->ckeckLike($userid, $other_userid);
+        if (!$islike === false) {
             // 相手もいいねしているか
-            $sql = "SELECT * FROM $this->table_name  WHERE now_page_profile_id = :userid AND send_like_userid =:otherid";
+            $sql = "SELECT * FROM $this->table_name  WHERE now_page_profile_id =:userid AND send_like_userid =:otherid";
             $pdo = $this->dbConnect();
             try {
                 $stmt = $pdo->prepare($sql);
@@ -213,6 +212,7 @@ class LikeLogic extends Dbc
                 $stmt->bindValue(':otherid', (int)h($other_userid), PDO::PARAM_INT);
                 $stmt->execute();
                 $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+                return $result;
                
             } catch (\Exception $e) {
                 echo '<br>えらー：' . $e->getMessage();

@@ -13,13 +13,15 @@ if (!$result) {
 }
 $login_user = $_SESSION['login_user'];
 $like = new LikeLogic;
-$getlikes = $like->getLike($login_user['user_id']);
 $title='マッチング一覧';
 require_once('header.php');
 require_once('navmenu.php');
 $matchid=$like->Matchid($login_user['user_id']);
-$matchusers=$like->MatchUser($matchid);
-
+$val=implode(',',$matchid);
+$matchusers=$like->MatchUser($val);
+// echo'<pre>';
+// var_dump($matchusers);
+// echo'</pre>';
 ?>
 <main>
 <?php if($matchusers=== false):?>
