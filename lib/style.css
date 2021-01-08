@@ -13,7 +13,6 @@ html {
 }
 
 body {
-  background: #f9fbfe;
   min-height: 100vh;
 }
 
@@ -59,8 +58,6 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -93,6 +90,24 @@ nav {
   text-decoration: none;
   color: #fff;
   font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-right: 5px;
+}
+
+.nav-ul li a i {
+  margin-right: 5px;
+}
+
+.pcmenu {
+  display: none;
 }
 
 .logo a {
@@ -104,9 +119,10 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 20px;
+  padding: 20px　0;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  margin-bottom: 10px;
 }
 
 .btnflex {
@@ -118,6 +134,13 @@ nav {
 
 .item {
   padding-left: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.item p {
+  margin-bottom: 0;
 }
 
 .br {
@@ -166,31 +189,10 @@ time {
      object-fit: cover;
 }
 
-.nav-ul li a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-right: 5px;
-}
-
-.nav-ul li a i {
-  margin-right: 5px;
-}
-
-.pcmenu {
-  display: none;
-}
-
 main {
-  margin-top: 30px;
+  margin-top: 60px;
   background: #fff;
-  padding: 20px 20px;
+  padding: 10px  20px 0;
   border-radius: 6px;
 }
 
@@ -244,6 +246,11 @@ form .file-up input {
   -webkit-transition: 0.7s ease-in-out;
   transition: 0.7s ease-in-out;
   border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  font-size: 12px;
+  margin-right: 20px;
 }
 
 #likeform .nolike i {
@@ -258,10 +265,103 @@ form .file-up input {
   -webkit-transition: 0.7s ease-in-out;
   transition: 0.7s ease-in-out;
   border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  font-size: 12px;
+  margin-right: 20px;
 }
 
 #likeform .like i {
   margin-right: 5px;
+}
+
+.mymain {
+  padding: 60px 0;
+}
+
+.chat-right, .chat-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.chat-right {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.chat-right :first-child {
+  margin-top: 10px;
+}
+
+.chat {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.msg-right {
+  position: relative;
+  background-color: #8e44ad;
+  padding: 8px 10px;
+  color: #fff;
+  border-radius: 7px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.msg-right::after {
+  position: absolute;
+  top: 11px;
+  right: -20px;
+  display: block;
+  width: 0;
+  height: 0;
+  content: '';
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #8e44ad;
+}
+
+.msg-left {
+  position: relative;
+  background-color: blue;
+  padding: 8px 10px;
+  color: #fff;
+  border-radius: 7px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.msg-left::after {
+  position: absolute;
+  top: 11px;
+  left: -20px;
+  display: block;
+  width: 0;
+  height: 0;
+  content: '';
+  border: 10px solid transparent;
+  border-right-color: blue;
+}
+
+.chatimg {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f8f8;
 }
 
 .btn-outline-primary a {
@@ -279,8 +379,11 @@ form .file-up input {
   .logo {
     display: block;
   }
+  .mymain {
+    padding-top: 80px;
+  }
   main {
-    margin: 50px 100px;
+    margin: 60px 100px 50px;
   }
   .br {
     display: none;
@@ -293,12 +396,18 @@ form .file-up input {
     display: block;
     margin-bottom: 0;
   }
+  .item p {
+    margin-bottom: 10px;
+  }
   time {
     font-size: 9px;
   }
   .otherimg {
     width: 200px;
     height: 200px;
+  }
+  #likeform .like {
+    margin-right: 40px;
   }
 }
 
@@ -316,12 +425,12 @@ form .file-up input {
     margin: 60px 300px 0;
     padding: 20px 60px;
   }
-  #likeform {
-    margin-right: 300px;
-    width: 420px;
+  .mymain {
+    padding-top: 100px;
   }
-  .hamburger {
-    display: none;
+  #likeform {
+    margin-right: 350px;
+    width: 420px;
   }
   .logo {
     display: block;
@@ -340,6 +449,12 @@ form .file-up input {
   .otherimg {
     width: 200px;
     height: 200px;
+  }
+  #likeform .like {
+    margin-right: 50px;
+  }
+  .item p {
+    margin-bottom: 20px;
   }
 }
 /*# sourceMappingURL=style.css.map */

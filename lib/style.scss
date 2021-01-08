@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  background: #f9fbfe;
+  
   min-height: 100vh;
 }
 // ログイン画面デザイン
@@ -54,7 +54,6 @@ body {
 // メニュー
 nav {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 0 15px;
@@ -83,8 +82,18 @@ nav {
   text-decoration: none;
   color: #fff;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 5px;
+  i {
+    margin-right: 5px;
+  }
 }
 
+.pcmenu {
+  display: none;
+}
 .logo a {
   color: #fff;
   font-weight: 700;
@@ -93,8 +102,10 @@ nav {
 
 .flex {
   display: flex;
-  margin-bottom: 20px;
+  padding: 20px　0;
   justify-content: space-around;
+  margin-bottom: 10px;
+
 }
 .btnflex {
   display: flex;
@@ -103,6 +114,10 @@ nav {
 }
 .item{
   padding-left: 15px;
+  flex-grow: 1;
+  p{
+    margin-bottom: 0;
+  }
 }
 // 改行
 .br{ display:block;}
@@ -138,24 +153,10 @@ time{
 }
 // 終わり異性一覧
 
-.nav-ul li a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-right: 5px;
-  i {
-    margin-right: 5px;
-  }
-}
-
-.pcmenu {
-  display: none;
-}
-
 main {
-  margin-top: 30px;
+  margin-top: 60px;
   background: #fff;
-  padding: 20px 20px;
+  padding: 10px  20px 0;
   border-radius: 6px;
 }
 
@@ -208,7 +209,11 @@ i{
   font-weight: 700;
   transition: 0.7s ease-in-out;
   border-radius: 10px;
-
+  margin-bottom: 20px;
+  padding:10px ;
+  width: 100%;
+  font-size:12px;
+  margin-right:20px;
   i {
     margin-right: 5px;
   }
@@ -221,12 +226,86 @@ i{
   font-weight: 700;
   transition: 0.7s ease-in-out;
   border-radius: 10px;
-
+  margin-bottom: 20px;
+  padding:10px ;
+  width: 100%;
+  font-size:12px;
+  margin-right:20px;
   i {
     margin-right: 5px;
   }
 }
+.mymain{
+  padding: 60px 0;
+}
+// チャット
 
+.chat-right,.chat-left{
+  display: flex;
+}
+.chat-right{
+  flex-direction: row-reverse;
+  :first-child{
+margin-top: 10px;
+  }
+}
+.chat{
+  flex-grow: 1;
+}
+.msg-right{
+  position: relative;
+  background-color: $Main;
+  padding:8px 10px;
+  color: $White;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+.msg-right::after{
+  position: absolute;
+  top: 11px;
+  right: -20px;
+  display: block;
+  width: 0;
+  height: 0;
+  content: '';
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid $Main;
+}
+
+.msg-left{
+  position: relative;
+  background-color: blue;
+  padding:8px 10px;
+  color: $White;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+.msg-left::after {
+  position: absolute;
+  top: 11px;
+  left: -20px;
+  display: block;
+  width: 0;
+  height: 0;
+  content: '';
+  border: 10px solid transparent;
+  border-right-color: blue;
+}
+.chatimg{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+
+}
+.card-footer{
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  background-color: #f8f8f8;
+}
 .btn-outline-primary a{
   text-decoration: none;
 }
@@ -241,9 +320,11 @@ i{
   .logo {
     display: block;
   }
-
+  .mymain{
+    padding-top: 80px;
+  }
   main {
-    margin: 50px 100px;
+    margin: 60px 100px 50px;
   }
   .br{ display:none;}
   nav {
@@ -254,6 +335,9 @@ i{
     display: block;
     margin-bottom: 0;
   }
+  .item p{
+    margin-bottom: 10px;
+}
 
   time{
     font-size: 9px;
@@ -261,6 +345,9 @@ i{
   .otherimg{
     width: 200px;
     height: 200px;
+  }
+  #likeform .like {
+    margin-right:40px;
   }
 }
 
@@ -278,12 +365,12 @@ i{
     margin: 60px 300px 0;
     padding: 20px 60px;
   }
-  #likeform{
-    margin-right:300px;
-    width: 420px;
+  .mymain{
+    padding-top: 100px;
   }
-  .hamburger {
-    display: none;
+  #likeform{
+    margin-right:350px;
+    width: 420px;
   }
 
   .logo {
@@ -305,4 +392,11 @@ i{
     width: 200px;
     height: 200px;
   }
+  #likeform .like {
+    margin-right:50px;
+  }
+  .item p{
+      margin-bottom: 20px;
+  }
+
 }

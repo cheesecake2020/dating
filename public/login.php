@@ -34,7 +34,7 @@ if (!$result) {
 } 
 $title='ログイン';
 require_once('header.php');
-
+require_once('navmenu.php');
 ?>
 
 <body>
