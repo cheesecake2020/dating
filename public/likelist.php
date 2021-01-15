@@ -18,9 +18,10 @@ $title='いいね一覧';
 require_once('header.php');
 require_once('navmenu.php');
 
+
 ?>
 <main>
-    <?php if($getlikes=== false):?>
+    <?php if(empty($getlikes)):?>
         <p>まだいいねがきていません</p>
         <?php else:?>
     <!-- いいねした人を表示する -->

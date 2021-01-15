@@ -3,6 +3,7 @@ session_start();
 require_once('../classes/UserLogic.php');
 require_once('../classes/LikeLogic.php');
 require_once('../classes/functions.php');
+require_once('../classes/ChatLogic.php');
 ini_set('display_errors', "On");
 // ログインしているか判定、していなかったら新規登録画面へ返す
 $result = UserLogic::checklogin();
@@ -13,19 +14,17 @@ if (!$result) {
 }
 $login_user = $_SESSION['login_user'];
 $like = new LikeLogic;
+$chat = new ChatLogic;
 $title='マッチング一覧';
 require_once('header.php');
 require_once('navmenu.php');
 $matchid=$like->Matchid($login_user['user_id']);
 $val=implode(',',$matchid);
-$matchusers=$like->MatchUser($val);
-// echo'<pre>';
-// var_dump($matchusers);
-// echo'</pre>';
+ $matchusers=$like->MatchUser($val);
 ?>
 <main>
-<?php if($matchusers=== false):?>
-        <p>まだいいねがきていません</p>
+<?php if(!is_array($matchusers)):?>
+        <p><?php echo $matchusers;?></p>
         <?php else:?>
     <!-- いいねした人を表示する -->
     <?php foreach($matchusers as $user):?>

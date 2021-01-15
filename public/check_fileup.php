@@ -46,7 +46,7 @@ if (!in_array(strtolower($file_ext), $allow_ext)) {/**strtolowerは大文字を�
             // DB保存(ファイル名、ファイルパス）
             $result = $user->fileSave($filename,$save_path,$login_user['user_id']);
             if($result){
-                include('ok_profile.php');
+                include('mypage.php');
             }else{
                 echo'データベースへの保存が失敗しました';
             }

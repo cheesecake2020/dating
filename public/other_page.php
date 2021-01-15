@@ -58,7 +58,7 @@ require_once('navmenu.php');
         <p>性格：<?php echo $user['personality']; ?></p>
         <p>メッセージ：<br class="br"><?php echo $user['message']; ?></p>
     <?php endforeach; ?>
-    <button><a href="search.php">戻る</a></button>
+    <button class="btn btn-outline-secondary mb-5"><a href="search.php">戻る</a></button>
 
     <form method="POST" id="likeform">
         <input type="hidden" name="csrf_token" value="<?php echo h(setToken()); ?>">　

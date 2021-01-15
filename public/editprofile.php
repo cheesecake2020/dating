@@ -32,7 +32,7 @@ require_once('navmenu.php');
         </div>
         <?php foreach ($userdata as $user) : ?>
             <div class="form-group">
-                <?php if ($user['profile_path'] === '') : ?>
+                <?php if (empty($user['profile_path'])) : ?>
                     <p>写真が設定されていません</p>
                 <?php else : ?>
                     <img class="img" src="<?php echo $user['profile_path']; ?>" alt="プロフィール写真">

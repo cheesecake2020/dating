@@ -328,4 +328,64 @@ class UserLogic extends Dbc
             return $e;
         }
     }
+    /**
+     * 異性の名前取得
+     * @param int $id
+     * @return 
+     */
+    public function getByothername($id)
+    {
+        if (empty($id)) {
+            exit('idがふせいです');
+        }
+        $sql = "SELECT name FROM  $this->table_name Where user_id = :id";
+        $pdo = $this->dbConnect();
+        try {
+            $dbh = $this->dbConnect();
+            // sqlの準備
+            $stmt = $dbh->prepare($sql);
+            // プレースホルダーの設定SQLインジェクションを防ぐ
+            $stmt->bindValue(':id', (int)$id, \PDO::PARAM_INT);
+            // SQLの実行
+            $stmt->execute();
+            // 結果を取得
+            while ($row = $stmt->fetch()) {
+                return $row['name'];
+            }
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            return $e;
+        }
+    }
+        /**
+     * 異性の名前取得
+     * @param int $id
+     * @return 
+     */
+    public function getByotherimage($id)
+    {
+        if (empty($id)) {
+            exit('idがふせいです');
+        }
+        $sql = "SELECT profile_path FROM  $this->table_name Where user_id = :id";
+        $pdo = $this->dbConnect();
+        try {
+            $dbh = $this->dbConnect();
+            // sqlの準備
+            $stmt = $dbh->prepare($sql);
+            // プレースホルダーの設定SQLインジェクションを防ぐ
+            $stmt->bindValue(':id', (int)$id, \PDO::PARAM_INT);
+            // SQLの実行
+            $stmt->execute();
+            // 結果を取得
+            while ($row = $stmt->fetch()) {
+                return $row['profile_path'];
+            }
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            return $e;
+        }
+    }
 }

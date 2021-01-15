@@ -154,7 +154,8 @@ class LikeLogic extends Dbc
      */
     public  function MatchUser($matchid)
     {
-        
+    if(!empty($matchid))
+    {
         // INでidを取得
             $sql = "SELECT* FROM users WHERE user_id IN ($matchid)";
             $pdo = $this->dbConnect();
@@ -168,6 +169,10 @@ class LikeLogic extends Dbc
                 echo 'SQL：' . $sql;
                 return '失敗';
             }
+    }else{
+        $text ='マッチング相手はいません';
+        return $text;
+    }
     }
     /**
      * 送ったいいねのすべてを表示
