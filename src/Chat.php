@@ -8,6 +8,7 @@ class Chat implements MessageComponentInterface {
 
     public function __construct() {
         $this->clients = new \SplObjectStorage();
+        echo "サーバー接続";
     }
 
     public function onOpen(ConnectionInterface $conn) {

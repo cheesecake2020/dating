@@ -32,15 +32,24 @@ if (!$result) {
     header('Location:http://localhost:8889/dating_app/public/login_form.php');
     return;
 } 
+$user = new UserLogic;
+$decision=$user->judglogin($email);
 $title='ログイン';
 require_once('header.php');
-require_once('navmenu.php');
+if($decision === '0'):
+    $updatelogin=$user->updatelogin($email);
 ?>
 
-<body>
+
     <main>
         <h2>ログイン完了</h2>
         <p>ログインしました！</p>
         <a href="editprofile.php">プロフィール作成</a>
+
     </main>
-    <?php require_once('footer.php');?>
+    <?php else:
+    var_dump($decision);
+    include('search.php');?>
+     <?php endif;?>
+
+ <?php require_once('footer.php');?>

@@ -388,4 +388,83 @@ class UserLogic extends Dbc
             return $e;
         }
     }
+        /**
+     * emailがDBにあるかチェック
+     * @param string $email
+     * @return 
+     */
+    public function checkEmail($email)
+    {
+        $result = false;
+        $sql = "SELECT email FROM  $this->table_name Where email = :email";
+        $pdo = $this->dbConnect();
+        try {
+            $dbh = $this->dbConnect();
+            // sqlの準備
+            $stmt = $dbh->prepare($sql);
+            // プレースホルダーの設定SQLインジェクションを防ぐ
+            $stmt->bindValue(':email', (string)$email, \PDO::PARAM_STR);
+            // SQLの実行
+            $stmt->execute();
+            // 結果を取得
+            while ($row = $stmt->fetch()) {
+                return $row['email'];
+            }           
+        } catch (\Exception $e) {
+            echo '<br>えらー：' . $e;
+            echo 'SQL：' . $sql;
+            return $result;
+        }
+    }
+          /**
+     * ログイン判定
+     * @param string $email
+     * @return string $row['login']
+     */
+    public function judglogin($email)
+    {
+        $sql = "SELECT login FROM  $this->table_name Where email = :email";
+        $pdo = $this->dbConnect();
+        try {
+            $dbh = $this->dbConnect();
+            // sqlの準備
+            $stmt = $dbh->prepare($sql);
+            // プレースホルダーの設定SQLインジェクションを防ぐ
+            $stmt->bindValue(':email', (string)$email, \PDO::PARAM_STR);
+            // SQLの実行
+            $stmt->execute();
+            // 結果を取得
+            while ($row = $stmt->fetch()) {
+                return $row['login'];
+            }           
+        } catch (\Exception $e) {
+           return $e->getMessage();
+        }
+    }
+        /**
+     * ログイン更新
+     * @param string $email
+     * @return 
+     */
+    public function updatelogin($email)
+    {
+        $result = false;
+        $sql = "UPDATE $this->table_name SET login = 1 WHERE email = :email";
+        $pdo = $this->dbConnect();
+        $pdo->beginTransaction();
+        try {
+            $stmt = $pdo->prepare($sql);
+            // プレースホルダーの設定SQLインジェクションを防ぐ
+            $stmt->bindValue(':email', (string)$email, \PDO::PARAM_STR);
+            // SQLの実行
+            $stmt->execute();
+            $pdo->commit();
+            $result = true;
+            return $result;
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+            $pdo->rollBack();
+            return $result;
+        }
+    }
 }

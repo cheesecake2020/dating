@@ -17,7 +17,6 @@ if(!$result){
 UserLogic::logout();
 $title='ログアウト';
 require_once('header.php');
-require_once('navmenu.php');
 ?>
 
     <main>

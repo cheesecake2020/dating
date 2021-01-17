@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../classes/UserLogic.php');
-require_once('../classes/chatLogic.php');
+require_once('../classes/ChatLogic.php');
 require_once('../classes/functions.php');
 ini_set('display_errors', "On");
 // ログインしているか判定、していなかったら新規登録画面へ返す

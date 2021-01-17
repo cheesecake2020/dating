@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ad849bbec3d5d4b231ed095423b970f014744c80',
+    'reference' => '18224700576fa3b3d019c2a398f86ebde897fa42',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ad849bbec3d5d4b231ed095423b970f014744c80',
+      'reference' => '18224700576fa3b3d019c2a398f86ebde897fa42',
     ),
     'cboden/ratchet' => 
     array (
@@ -164,21 +164,21 @@
     ),
     'symfony/polyfill-mbstring' => 
     array (
-      'pretty_version' => 'v1.20.0',
-      'version' => '1.20.0.0',
+      'pretty_version' => 'v1.22.0',
+      'version' => '1.22.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '39d483bdf39be819deabf04ec872eb0b2410b531',
+      'reference' => 'f377a3dd1fde44d37b9831d68dc8dea3ffd28e13',
     ),
     'symfony/polyfill-php80' => 
     array (
-      'pretty_version' => 'v1.20.0',
-      'version' => '1.20.0.0',
+      'pretty_version' => 'v1.22.0',
+      'version' => '1.22.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'e70aa8b064c5b72d3df2abd5ab1e90464ad009de',
+      'reference' => 'dc3063ba22c2a1fd2f45ed856374d79114998f91',
     ),
     'symfony/routing' => 
     array (

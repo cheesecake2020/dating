@@ -61,7 +61,7 @@ require_once('header.php');
 
                     <button type="submit" class="btn btn-primary">ログイン</button>
                 </form>
-                <a href="signup_form.php">新規登録はこちら</a>
+                <a href="password_reset.php">パスワードを忘れ方</a>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@ require_once('header.php');
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">ログインする</h2>
+                <h2 class="modal-title">お試しログイン</h2>
                 <button class="btn btn-secondary" data-dismiss="modal">✖</button>
             </div>
             <div class="modal-body">
@@ -82,18 +82,12 @@ require_once('header.php');
 
                     <div class="form-group">
                         <label for="email">メールアドレス：</label>
-                        <input class="form-control" type="email" name="email">
-                        <?php if (isset($err['email'])) : ?>
-                            <p class="err"><?php echo $err['email']; ?></p>
-                        <?php endif; ?>
+                        <input class="form-control" type="password" name="email"value="shoitiro@example.com" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="password">パスワード：</label>
-                        <input class="form-control" type="password" name="password">
-                        <?php if (isset($err['password'])) : ?>
-                            <p class="err"><?php echo $err['password']; ?></p>
-                        <?php endif; ?>
+                        <input class="form-control" type="password" name="password"value="shoitiro55" readonly>
                     </div>
 
                     <button type="submit" class="btn btn-success">ログイン</button>

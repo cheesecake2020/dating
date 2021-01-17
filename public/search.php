@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 require_once('../classes/UserLogic.php');
 require_once('../classes/functions.php');
 ini_set('display_errors', "On");
