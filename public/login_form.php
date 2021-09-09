@@ -1,11 +1,19 @@
 <?php
 session_start();
 require_once('../classes/UserLogic.php');
+require_once('../classes/functions.php');
+if(empty($_SERVER["HTTPS"])){
+    $sever="http://";  
+}else{
+    $sever="https://";
+}
 $result = UserLogic::checklogin();
 if ($result) {
-    header('Location:http://localhost:8889/dating_app/public/mypage.php');
+    header('Location:'.$sever.$_SERVER['HTTP_HOST'].'/public/mypage.php');
     return;
 }
+
+
 $err = $_SESSION;
 // セッションを消す
 $_SESSION = array();

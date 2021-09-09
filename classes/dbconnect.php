@@ -16,6 +16,7 @@ ini_set('display_errors',"On");
         $pass = DB_PASS;
         $port = DB_PORT;
         $dsn = "mysql:dbname=$dbname;port=$port;host=$host;charset=utf8";
+        $dsn2 = "mysql:host=$host;dbname=$dbname;charaset=UTF8";
         try {
             $pdo = new \PDO($dsn, $user, $pass, [
                 \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,

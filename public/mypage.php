@@ -18,7 +18,7 @@ $title='マイページ';
 require_once('header.php');
 require_once('navmenu.php');
 ?>
-<main>
+<main >
     <h2>マイページ</h2>
     <?php foreach ($userdata as $user) : ?>
         <?php if (empty($user['profile_path'])) : ?>

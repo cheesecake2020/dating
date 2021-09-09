@@ -22,7 +22,7 @@ body {
 }
 
 .home::after {
-  content: '';
+  content: "";
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   left: 0;
@@ -105,7 +105,6 @@ nav {
   width: 100%;
   margin-right: 5px;
 }
-
 .nav-ul li a i {
   margin-right: 5px;
 }
@@ -135,7 +134,6 @@ nav {
   padding-left: 15px;
   flex-grow: 1;
 }
-
 .item p {
   margin-bottom: 0;
 }
@@ -151,7 +149,8 @@ time {
 .likeimg {
   width: 60px;
   height: 77px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .flex-wrap {
@@ -165,7 +164,6 @@ time {
   margin-bottom: 20px;
   text-align: center;
 }
-
 .box p {
   text-align: center;
 }
@@ -175,15 +173,18 @@ time {
   display: inline-block;
   width: 100px;
   height: 100px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 main {
-  margin-top: 60px;
+  margin: 60px auto 0;
   background: #fff;
-  padding: 10px  20px 0;
+  padding: 10px 20px 0;
   border-radius: 6px;
   z-index: 5;
+  max-width: 1040px;
+  width: 100%;
 }
 
 .err {
@@ -205,14 +206,14 @@ form .file-up input {
   text-align: center;
   margin: 0;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .match {
   text-align: center;
   display: block;
 }
-
 .match i {
   color: palevioletred;
 }
@@ -240,7 +241,6 @@ form .file-up input {
   font-size: 12px;
   margin-right: 20px;
 }
-
 #likeform .nolike i {
   margin-right: 5px;
 }
@@ -258,7 +258,6 @@ form .file-up input {
   font-size: 12px;
   margin-right: 20px;
 }
-
 #likeform .like i {
   margin-right: 5px;
 }
@@ -274,7 +273,6 @@ form .file-up input {
 .chat-right {
   flex-direction: row-reverse;
 }
-
 .chat-right :first-child {
   margin-top: 10px;
 }
@@ -299,7 +297,7 @@ form .file-up input {
   display: block;
   width: 0;
   height: 0;
-  content: '';
+  content: "";
   border-top: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid transparent;
@@ -322,7 +320,7 @@ form .file-up input {
   display: block;
   width: 0;
   height: 0;
-  content: '';
+  content: "";
   border: 10px solid transparent;
   border-right-color: blue;
 }
@@ -331,7 +329,8 @@ form .file-up input {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .card-footer {
@@ -354,96 +353,108 @@ form .file-up input {
   header {
     margin: 0;
   }
+
   #likeform {
     margin-right: 100px;
   }
+
   .logo {
     display: block;
-    margin-right: 30px;
   }
+
   .mymain {
     padding-top: 60px;
   }
-  main {
-    margin: 60px 100px 50px;
-  }
+
   .br {
     display: none;
   }
+
   nav {
     padding: 0 40px;
     height: 60px;
   }
+
   .pcmenu {
     display: block;
     margin-bottom: 0;
   }
+
   .item p {
     margin-bottom: 10px;
   }
+
   time {
     font-size: 9px;
   }
+
   .otherimg {
     width: 200px;
     height: 200px;
   }
+
   #likeform .like {
     margin-right: 40px;
   }
+
   .box {
     margin: 0 30px 20px;
   }
 }
-
 @media (min-width: 1440px) {
   header {
     margin: 0;
   }
+
   .br {
     display: none;
   }
+
   nav {
     padding: 0 150px;
   }
-  main {
-    margin: 60px 250px 0;
-    padding: 20px 60px;
-  }
+
   .mymain {
     padding-top: 60px;
   }
+
   #likeform {
     margin-right: 350px;
     width: 420px;
   }
+
   .logo {
     display: block;
     padding-bottom: 5px;
-    margin-right: 180px;
-    margin-top: 10px;
   }
+
   .text1 {
     padding-top: 150px;
   }
+
   .pcmenu {
     display: block;
     margin-bottom: 0;
   }
+
   time {
     font-size: 10px;
   }
+
   .otherimg {
     width: 200px;
     height: 200px;
   }
+
   #likeform .like {
     margin-right: 50px;
   }
+
   .item p {
     margin-bottom: 20px;
   }
+
   .box {
     margin: 0 30px 20px;
   }
-}
+}/*# sourceMappingURL=style.css.map */

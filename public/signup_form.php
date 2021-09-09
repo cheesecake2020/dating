@@ -44,7 +44,7 @@ require_once('header.php');
         <input type="hidden" name="csrf_token" value="<?php echo h(setToken()); ?>">
         <button type="submit" class="btn login btn-primary mb-2">新規登録</button>
     </form>
-    <a href="login_form.php">ログインする</a>
+    <a href="login_form.php#loginModal">ログインする</a>
 </div>
    </div>
       

@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once('../classes/UserLogic.php');
-require_once('../classes/chatLogic.php');
 require_once('../classes/functions.php');
 ini_set('display_errors', "On");
 $title = 'パスワードリセット';
@@ -18,7 +17,7 @@ require_once('header.php');
             <input class="form-control" type="email" name="email" placeholder="メールアドレス"required>
         </div>
         <button type="submit" name="reset-password"class="btn btn-primary mb-2">送信</button>
-        <a href="login_form.php"><button class="btn btn-outline-secondary mb-2">戻る</button></a>
     </form>
+    <a href="login_form.php"><button class="btn btn-outline-secondary mb-2">戻る</button></a>
 </div>
 <?php require_once('footer.php');?>
