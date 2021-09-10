@@ -1,0 +1,15 @@
+$media-tab:600px;
+$media-sp:450px;
+$Main: #8e44ad;
+$White:#fff;
+@mixin tab{
+    @media only screen and (min-width: $media-tab) {
+        @content;  
+      }
+}
+
+@mixin sp{
+    @media only screen and (max-width: $media-sp) {
+        @content;  
+      }
+}

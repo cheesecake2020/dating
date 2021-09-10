@@ -1,8 +1,8 @@
 <body>
 <header>
-    <nav>
+    <nav class="main-module">
         <div class="logo">
-            <a href="#">カップリン<span>グ．</span></a>
+            カップリン<span>グ．</span>
         </div>
         <ul class="nav-ul" id="nav-ul">
             <li><a href="search.php"><i class="fas fa-search"></i><p class="pcmenu">探す</p></a></li>

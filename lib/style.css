@@ -70,21 +70,37 @@ body {
   background-color: #fff;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 15px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
+header {
   background-color: #8e44ad;
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+}
+
+.main-module {
+  max-width: 1040px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (min-width: 600px) {
+  .main-module {
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .logo {
   display: none;
+}
+@media only screen and (min-width: 600px) {
+  .logo {
+    color: #fff;
+    font-weight: 600;
+  }
 }
 
 .nav-ul {
@@ -120,7 +136,7 @@ nav {
 
 .flex {
   display: flex;
-  padding: 20px　0;
+  padding: 20px 0;
   justify-content: space-around;
   margin-bottom: 10px;
 }
@@ -178,7 +194,7 @@ time {
 }
 
 main {
-  margin: 60px auto 0;
+  margin: 60px auto 60px;
   background: #fff;
   padding: 10px 20px 0;
   border-radius: 6px;
@@ -266,7 +282,8 @@ form .file-up input {
   padding: 60px 0;
 }
 
-.chat-right, .chat-left {
+.chat-right,
+.chat-left {
   display: flex;
 }
 
@@ -350,10 +367,6 @@ form .file-up input {
 
 /* レスポンシブ */
 @media (min-width: 600px) {
-  header {
-    margin: 0;
-  }
-
   #likeform {
     margin-right: 100px;
   }
@@ -368,11 +381,6 @@ form .file-up input {
 
   .br {
     display: none;
-  }
-
-  nav {
-    padding: 0 40px;
-    height: 60px;
   }
 
   .pcmenu {
@@ -402,16 +410,8 @@ form .file-up input {
   }
 }
 @media (min-width: 1440px) {
-  header {
-    margin: 0;
-  }
-
   .br {
     display: none;
-  }
-
-  nav {
-    padding: 0 150px;
   }
 
   .mymain {
@@ -421,11 +421,6 @@ form .file-up input {
   #likeform {
     margin-right: 350px;
     width: 420px;
-  }
-
-  .logo {
-    display: block;
-    padding-bottom: 5px;
   }
 
   .text1 {

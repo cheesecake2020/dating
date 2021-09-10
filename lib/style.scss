@@ -1,5 +1,5 @@
-$Main: #8e44ad;
-$White:#fff;
+
+@use './variable';
 
 * {
   margin: 0;
@@ -14,76 +14,98 @@ html {
 }
 
 body {
-  
+
   min-height: 100vh;
 }
+
 // ログイン画面デザイン
-.home{
+.home {
   background: url("./mainimage.jpg") no-repeat center;
   background-size: cover;
   height: 100vh;
- 
+
 }
+
 .home::after {
   content: '';
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, .5);
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
 }
-.btn-primary{
-  background-color: $Main;
-  border: 2px solid $Main;
+
+.btn-primary {
+  background-color: variable.$Main;
+  border: 2px solid variable.$Main;
   border-radius: 7px;
 }
-.text1{
-  padding-top:50px;
+
+.text1 {
+  padding-top: 50px;
   z-index: 10;
-  color:$White;
+  color:  variable.$White;
   position: relative;
 }
-.text2{
-  padding:20px 20px;
+
+.text2 {
+  padding: 20px 20px;
   z-index: 10;
-  color:#222222;
+  color: #222222;
   position: relative;
-  background-color: $White;
+  background-color:  variable.$White;
   border-radius: 7px;
-  top:30px;
+  top: 30px;
 
 }
-.mybox{
-  margin-top:80px;
+
+.mybox {
+  margin-top: 80px;
 }
-.login{
+
+.login {
   display: block;
   width: 100%;
 }
-.signup{
+
+.signup {
   margin-top: 20px;
   padding: 40px 15px;
   z-index: 10;
   background-color: #fff;
 }
+
 // メニュー
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 15px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
+header {
   background-color: #8e44ad;
   width: 100%;
+  position: fixed;
+  top:0;
+  
+  z-index: 99;
+}
 
+.main-module {
+  max-width: 1040px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+ 
+  @include variable.tab{
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .logo {
   display: none;
+  @include variable.tab{
+    color: variable.$White;
+    font-weight: 600;
+  }
 }
 
 .nav-ul {
@@ -103,6 +125,7 @@ nav {
   justify-content: space-between;
   width: 100%;
   margin-right: 5px;
+
   i {
     margin-right: 5px;
   }
@@ -111,68 +134,82 @@ nav {
 .pcmenu {
   display: none;
 }
+
 .logo a {
   color: #fff;
   font-weight: 700;
- 
+
 }
 
 .flex {
   display: flex;
-  padding: 20px　0;
+  padding: 20px 0;
   justify-content: space-around;
   margin-bottom: 10px;
 
 }
+
 .btnflex {
   display: flex;
   margin-bottom: 20px;
 
 }
-.item{
+
+.item {
   padding-left: 15px;
   flex-grow: 1;
-  p{
+
+  p {
     margin-bottom: 0;
   }
 }
+
 // 改行
-.br{ display:block;}
-time{
+.br {
+  display: block;
+}
+
+time {
   font-size: 7px;
 }
-.likeimg{
+
+.likeimg {
   width: 60px;
   height: 77px;
   object-fit: cover;
 }
-.flex-wrap{
+
+.flex-wrap {
   display: flex;
   flex-wrap: wrap;
 }
+
 // 異性一覧
 .box {
   display: inline-block;
-margin-right:30px;
-margin-bottom: 20px;
+  margin-right: 30px;
+  margin-bottom: 20px;
   text-align: center;
-  p{
+
+  p {
     text-align: center;
   }
 }
-.otherimg{
+
+.otherimg {
   border-radius: 50%;
   display: inline-block;
   width: 100px;
   height: 100px;
   object-fit: cover;
 }
+
 // 終わり異性一覧
 
 main {
-  margin: 60px auto 0;
+  margin: 60px auto 60px;
   background: #fff;
-  padding: 10px  20px 0;
+  padding: 10px 20px 0;
   border-radius: 6px;
   z-index: 5;
   max-width: 1040px;
@@ -203,36 +240,41 @@ form .file-up {
   height: 100%;
   object-fit: cover;
 }
+
 // マッチング表示
-.match{
-text-align: center;
-display: block;
-i{
-  color: palevioletred;
+.match {
+  text-align: center;
+  display: block;
+
+  i {
+    color: palevioletred;
+  }
 }
-}
+
 // いいねボタン
-#likeform{
+#likeform {
   position: fixed;
-  bottom:0;
-  right:0;
+  bottom: 0;
+  right: 0;
   z-index: 998;
-  margin-right:20px;
+  margin-right: 20px;
   display: inline-block;
   width: 50%;
 }
+
 #likeform .nolike {
   margin-top: 0;
-  background-color: $White;
-  color: $Main;
+  background-color:  variable.$White;
+  color:  variable.$Main;
   font-weight: 700;
   transition: 0.7s ease-in-out;
   border-radius: 10px;
   margin-bottom: 20px;
-  padding:10px ;
+  padding: 10px;
   width: 100%;
-  font-size:12px;
-  margin-right:20px;
+  font-size: 12px;
+  margin-right: 20px;
+
   i {
     margin-right: 5px;
   }
@@ -240,46 +282,55 @@ i{
 
 #likeform .like {
   margin-top: 0;
-  background-color: $Main;
-  color: $White;
+  background-color:  variable.$Main;
+  color: variable.$White;
   font-weight: 700;
   transition: 0.7s ease-in-out;
   border-radius: 10px;
   margin-bottom: 20px;
-  padding:10px ;
+  padding: 10px;
   width: 100%;
-  font-size:12px;
-  margin-right:20px;
+  font-size: 12px;
+  margin-right: 20px;
+
   i {
     margin-right: 5px;
   }
 }
-.mymain{
+
+.mymain {
   padding: 60px 0;
 }
+
 // チャット
 
-.chat-right,.chat-left{
+.chat-right,
+.chat-left {
   display: flex;
 }
-.chat-right{
+
+.chat-right {
   flex-direction: row-reverse;
-  :first-child{
-margin-top: 10px;
+
+  :first-child {
+    margin-top: 10px;
   }
 }
-.chat{
+
+.chat {
   flex-grow: 1;
 }
-.msg-right{
+
+.msg-right {
   position: relative;
-  background-color: $Main;
-  padding:8px 10px;
-  color: $White;
+  background-color: variable.$Main;
+  padding: 8px 10px;
+  color: variable.$White;
   border-radius: 7px;
   box-sizing: border-box;
 }
-.msg-right::after{
+
+.msg-right::after {
   position: absolute;
   top: 11px;
   right: -20px;
@@ -290,17 +341,18 @@ margin-top: 10px;
   border-top: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid $Main;
+  border-left: 10px solid variable.$Main;
 }
 
-.msg-left{
+.msg-left {
   position: relative;
   background-color: blue;
-  padding:8px 10px;
-  color: $White;
+  padding: 8px 10px;
+  color: variable.$White;
   border-radius: 7px;
   box-sizing: border-box;
 }
+
 .msg-left::after {
   position: absolute;
   top: 11px;
@@ -312,114 +364,119 @@ margin-top: 10px;
   border: 10px solid transparent;
   border-right-color: blue;
 }
-.chatimg{
+
+.chatimg {
   border-radius: 50%;
   width: 50px;
   height: 50px;
   object-fit: cover;
 
 }
-.card-footer{
+
+.card-footer {
   position: fixed;
-  bottom:0;
+  bottom: 0;
   width: 100%;
   background-color: #f8f8f8;
 }
-.btn-outline-primary a{
+
+.btn-outline-primary a {
   text-decoration: none;
 }
-.hidden_box{
+
+.hidden_box {
   display: none;
 }
+
 /* レスポンシブ */
 @media (min-width:600px) {
-  header {
-    margin: 0;
+ 
+  #likeform {
+    margin-right: 100px
   }
-  #likeform{
-    margin-right:100px
-  }
+
   .logo {
     display: block;
   }
-  .mymain{
+
+  .mymain {
     padding-top: 60px;
   }
 
-  .br{ display:none;}
-  nav {
-    padding: 0 40px;
-    height: 60px;
+  .br {
+    display: none;
   }
+
   .pcmenu {
     display: block;
     margin-bottom: 0;
   }
-  .item p{
-    margin-bottom: 10px;
-}
 
-  time{
+  .item p {
+    margin-bottom: 10px;
+  }
+
+  time {
     font-size: 9px;
   }
-  .otherimg{
+
+  .otherimg {
     width: 200px;
     height: 200px;
   }
+
   #likeform .like {
-    margin-right:40px;
+    margin-right: 40px;
   }
+
   .box {
-   margin:0 30px 20px;
+    margin: 0 30px 20px;
   }
 }
 
-@media (min-width:1440px) 
-{
-  header {
-    margin: 0;
-  }
-  .br{ display:none;}
-  nav {
-    padding: 0 150px;
-  }
+@media (min-width:1440px) {
+  
 
-
-  .mymain{
+  .br {
+    display: none;
+  }
+  .mymain {
     padding-top: 60px;
   }
-  #likeform{
-    margin-right:350px;
+
+  #likeform {
+    margin-right: 350px;
     width: 420px;
   }
 
-  .logo {
-    display: block;
-    padding-bottom: 5px;
-  }
-  .text1{
-    padding-top:150px;
+  .text1 {
+    padding-top: 150px;
   }
 
   .pcmenu {
     display: block;
     margin-bottom: 0;
   }
-  time{
+
+  time {
     font-size: 10px;
   }
-  .otherimg{
+
+  .otherimg {
     width: 200px;
     height: 200px;
   }
+
   #likeform .like {
-    margin-right:50px;
+    margin-right: 50px;
   }
-  .item p{
-      margin-bottom: 20px;
+
+  .item p {
+    margin-bottom: 20px;
   }
+
   .box {
-    margin:0 30px 20px;
-   }
+    margin: 0 30px 20px;
+  }
 
 }
